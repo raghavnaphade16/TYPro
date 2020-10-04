@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@800&display=swap&family=Courgette&display=swap" rel="stylesheet">
+  
+
+
+<style>
+  
+  .ciquote{
+    height: 16em;
+    margin-top: 50px;
+    border:3px solid #cecece;
+    border-radius: 25px;
+    border-color: red;
+  }
+  .mainquote{
+       margin-top: 20px;
+       padding: 5px 150px;
+       position: relative;
+       font-family: 'Dosis', sans-serif;
+       font-size: 28px;
+       text-align: center;
+       color: black;
+  }
+  .DoubleQuoteStart{
+    font-size: 40px; padding: 10px;
+  }
+  .DoubleQuoteEnd{
+    font-size: 40px; padding: 10px;
+  }
+  .Quote{
+    font-size: 30px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<!--Quote Slider Start-->
+<div class="container-fluid QuoteSlider">  
+  <div class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselSliderQuote" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselSliderQuote" data-slide-to="1"></li>
+      <li data-target="#carouselSliderQuote" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner ciquote">
+      <div class="carousel-item active ">
+        <blockquote class="text-center mainquote">  
+          <p class="Quote"><i class="fas fa-quote-left DoubleQuoteStart" aria-hidden="true" ></i>If more of us valued food and cheer and song above hoarded gold,it would be merrier world <i class="fas fa-quote-right DoubleQuoteEnd" aria-hidden="true"></i></p>
+          <p class="Quote">- J.R.R. Tolkien</p>
+        </blockquote>
+      </div>
+
+      <div class="carousel-item ">
+        <blockquote class="text-center mainquote">
+          <p class="Quote"><i class="fas fa-quote-left DoubleQuoteStart" aria-hidden="true" ></i>One cannot think well, love well, sleep well, if one has not dined well <i class="fas fa-quote-right DoubleQuoteEnd" aria-hidden="true"></i></p>
+          <p class="Quote">- Virginia Woolf, A Room of One's Own</p>
+        </blockquote>
+      </div>
+      
+      <div class="carousel-item ">
+        <blockquote class="text-center mainquote">
+          <p class="Quote"><i class="fas fa-quote-left DoubleQuoteStart" aria-hidden="true" ></i>Let food be the medicine and medicine be the food <i class="fas fa-quote-right DoubleQuoteEnd" aria-hidden="true"></i></p>
+          <p class="Quote">- Hippocrates</p>
+        </blockquote>
+      
+      </div>
+    </div>
+    <div>
+        <a class="carousel-control-prev" href="#carouselSliderQuote" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselSliderQuote" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true" ></span>
+          <span class="sr-only">Next</span>
+        </a>
+    </div>
+  </div>
+</div>
+<!--Quote Slider End-->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>

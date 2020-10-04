@@ -1,0 +1,46 @@
+{% load static %}
+{% static "images" as baseUrl  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&family=Open+Sans:ital,wght@1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/ViewAllStyles.css' %}">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="container-fluid " >
+            <div class="row ">
+                {% for rest in rests %}            
+                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3" >
+                        <div class="card myCart">
+                            <img src="{{rest.RestImg.url}}" class="card-img-top" alt="...">
+                            <div class="card-body cbody" >
+								<h5 class="card-title restnamestyle" name="restName" >{{rest.RestName}}</h5>
+								<p class="card-text restaddrstyle" name="restAddr" >{{rest.RestAddr}}</p>
+                                <div class="indexStar">
+                                    <i class="fas fa-star" ></i>
+                                    <i class="fas fa-star" ></i>
+                                    <i class="fas fa-star" ></i>
+                                    <i class="fas fa-star-half"></i>                   
+                                </div>
+                                    <br>
+                                <a href="myRest/{{rest.RestId}}"><button id="{{rest.RestId}}" class="btn  cart myBtn">Book A Table</button></a>
+                            </div>
+                        </div>
+                    </div>                
+                {% endfor %}
+            </div>
+        </div> 
+        <div class="divViewAll">
+            <button  class="btn  cart viewall">View All</button>
+        </div>  
+    </div>
+</body>
+</html>

@@ -1,56 +1,163 @@
 {% load static %}
 {% static "images" as baseUrl  %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <style>
-        .indexCarousel-bg-size{
-            width: 100%;
-            max-height: 400px;
-        }
-    </style>
+    
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book A Table</title>
+  
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
- 
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&family=Open+Sans:ital,wght@1,600&display=swap&family=Courgette&display=swa&family=Courgette&display=swap&family=Secular+One&family=Source+Sans+Pro:ital,wght@1,700&display=swap&family=Dosis:wght@800&display=swap&family=Courgette&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/ViewAllStyles.css' %}">
+     <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+    
 </head>
 <body>
-    <!--Navigation-->
-    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top" >
-    <div class="container-fluid" >
-        
-        <a class="navbar-brand" href="#"><img src="{% static 'images/Newlogo4.png' %}"></a>
-        <form class="form-inline" style="margin-left: 20px;" action="#">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search">
-            <button class="btn btn-success" type="submit">Search</button>
-        </form>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+    <!--Nav Bar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Book a Table</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse"  id="navbarResponsive">
-            <ul class="navbar-nav ml-auto" style="margin-right: 40px;">
-                <li class="nav-item " style="margin-right: 40px;" >
-                    <a class="nav-link" href="#">8793489896</a>
-                </li>
-                <li class="nav-item active" style="margin-right: 40px;">
-                    <a class="nav-link" href="#">Help</a>
-                </li>
-                <li class="nav-item" style="margin-right: 40px;">
-                    <a class="nav-link" href="login">Login</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">
+                        Home
+                        <span class="sr-only">(current)</span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="registration">SignUp</a>
+                    <a class="nav-link" href="/about.html">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Topics
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Technology</a>
+                        <a class="dropdown-item" href="#">Web Development</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Support</a>
+                        <a class="dropdown-item" href="#">Write for us</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Contact.html">
+                        Contact
+                        us
+                    </a>
+                        </li>
+                    </div>
                 </li>
             </ul>
-        </div> 
-    </div>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <div class="mx-2">
+
+                <!--   <button class="btn btn-success" data-toggle="modal" data-target="#SignUpModal">Sign Up</button>-->
+                <button class="btn btn-outline-success mx-1" data-toggle="modal" data-target="#loginModal">Login</button>
+                <button class="btn btn-outline-success mx-1" data-toggle="modal" data-target="#signup">Sign Up</button>
+            </div>
+        </div>
     </nav>
+
+    <!--Login  Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModal">Login to your Account</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="login" method="post">
+                        {% csrf_token %}   
+                        <div class="form-group">
+                            <label for="firstname">User Name</label>
+                            <input type="text" class="form-control" id="uname" name="exampleInputEmail1" placeholder="Enter Your Username ">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password"> Password</label>
+                            <input type="text" class="form-control" id="password" name="exampleInputPassword1" placeholder=" Enter Your Password">
+                        </div>
+                        <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Login</button>
+                            
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--SignUp  Modal -->
+    <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="signup" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signup">Login to your Account</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                    <form action=" /signup" method='post'>
+                        <div class="form-group">
+                            <label for="username">UserName</label>
+                            <input type="text" class="form-control" id="uname" name="uname" placeholder="Enter Username ">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fname">first name</label>
+                            <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter firstname ">
+                        </div>
+                        <div class="form-group">
+                            <label for="lname">Last Name</label>
+                            <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter Last Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control" id="email" name="email" placeholder="name@gmail.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phno">PhoneNo</label>
+                            <input type="Number" class="form-control" id="Phno" name="Phno" placeholder="Enter Phone Number">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="text" class="form-control" id="password" name="password" placeholder="Enter Password">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmpassword">Confirm Password</label>
+                            <input type="text" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Enter Your Password Again">
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">
+                                    Submit
+                                </button>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>    
     <!--Image Slider-->
     <div id="slides" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
@@ -62,72 +169,391 @@
         <!-- The slideshow -->
         <div class="carousel-inner" >
             <div class="carousel-item active indexCarousel-bg-size"  >
-                <img  src="{% static 'images/Rest1.jpg' %}"  alt="Western Food">
-                <div class="carousel-caption">
-                    <h1 class="display-2">Western Food</h1>
-                    <h3>Pizza</h3>
-                    <button type="button" class="btn  btn-outline-light btn-lg ">Book A Table</button>
-                </div>
+                <img   src="{% static 'images/resizeRest1.jpg' %}"  alt="Western Food">
+               
             </div>
             <div class="carousel-item indexCarousel-bg-size">
-                <img src="{% static 'images/Rest3.jpg' %}" alt="South Indian">
-                <div class="carousel-caption">
-                    <h1 class="display-2">South Indian</h1>
-                    <h3>Idli/Dosa</h3>
-                    <button type="button" class="btn btn-primary btn-outline-light btn-lg ">Book A Table</button>
-                </div>
+                <img src="{% static 'images/resizeRest3.jpg' %}" alt="South Indian">
+               
             </div>
             <div class="carousel-item indexCarousel-bg-size">
-                <img src="{% static 'images/Rest4.jpg' %}" alt="North Indian">
-                <div class="carousel-caption">
-                    <h1 class="display-2">North Indian</h1>
-                    <h3>Punjabi</h3>
-                    <button type="button" class="btn btn-outline-light btn-lg">Book A Table</button>
-                </div>
+                <img src="{% static 'images/resizeRest4.jpeg' %}" alt="North Indian">
+            </div>
+            <div class="carousel-caption"> 
+                <button type="button" class="btn  btn-outline-light btn-lg ">Book A Table</button>
             </div>
         </div>
     </div>
-
-    <div class="container-fluid" style="margin-top: 20px;">
-        <div class="row jumbotron">
+    
+    <!--Filter-->
+    <div class="container-fluid MainFilter" >
+        <div>
+            <p style="font-family: 'Roboto', sans-serif;font-size: 25px;">What are you looking for?</p>
+        </div>
+        <div class="row ">
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3" >
-                <button type="button" class="btn  btn-lg btn-block" style="background-color:white;">Near Me</button>
+                <button type="button" class="btn  btn-lg btn-block FilterBtn" ><img class="filterLogo" src="{% static 'images/resizerestaurantIcon.png' %}" class="removeImage" />Near Me</button>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3" >
-                <button type="button" class="btn  btn-lg btn-block" style="background-color: white;">Lunch</button>
+                <button type="button" class="btn  btn-lg btn-block FilterBtn" style="background-color: white;"><img class="filterLogo" src="{% static 'images/resizeveg.png' %}" class="removeImage" />Veg</button>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3" >
-                <button type="button" class="btn  btn-lg btn-block" style="background-color: white;">Dinner</button>
+                <button type="button" class="btn  btn-lg btn-block FilterBtn" style="background-color: white;"><img class="filterLogo" src="{% static 'images/resizeNV.png' %}" class="removeImage" />Non Veg </button>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3" >
-                <button type="button" class="btn  btn-lg btn-block" style="background-color: white;">Fast Food</button>
+                <button type="button" class="btn  btn-lg btn-block FilterBtn" style="background-color: white;"><img class="filterLogo" src="{% static 'images/resizerestaurantIcon.png' %}" class="removeImage" />Both</button>
             </div>
         </div>   
     </div>
-    <!--Hotel-->
-
-    <div class="container-fluid">
+    <!--Filter End-->
+    <div class="container-fluid containerViewAll" >
         <div class="container-fluid " >
             <div class="row ">
-                {% for rest in rests %}
-               <!-- <form action="home" method="post" >
-                {% csrf_token %} -->
-                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3" >
-                        <div class="card" style="width: 18rem;">
-                            <img src="{{rest.RestImg.url}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-            <!-- I want RestName and RestAddr send to Rest Def in views.py -->            
-                            <h5 class="card-title" name="restName">{{rest.RestName}}</h5>
-                            <p class="card-text" name="restAddr">{{rest.RestAddr}}</p>
-                            <a href="rest{{rest.RestId}}"><button id="{{rest.RestId}}" class="btn btn-primary cart">Quick View</button></a>
+                {% for rest in rests %}            
+                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3"  >
+                        <a href="myRest/{{rest.RestId}}">
+                            <div class="card myCart">
+                                <img src="{{rest.RestImg.url}}" class="card-img-top cartImg" alt="...">
+                                <div class="card-body cbody" >
+                                    <h5 class="card-title restnamestyle" name="restName" >{{rest.RestName}}</h5>
+                                    <p class="card-text restaddrstyle" name="restAddr" >{{rest.RestAddr}}</p>
+                                    <div class="indexStar">
+                                        <i class="fas fa-star" ></i>
+                                        <i class="fas fa-star" ></i>
+                                        <i class="fas fa-star" ></i>
+                                        <i class="fas fa-star-half"></i>                   
+                                    </div>
+                                        <br>
+                                    <!--<a href="myRest/{{rest.RestId}}"><button id="{{rest.RestId}}" class="btn  cart myBtn">Book A Table</button></a> -->
+                                </div>
                             </div>
-                        </div>
-                </div>
-               <!-- </form> -->
+                        </a>
+                    </div>                
                 {% endfor %}
-                
             </div>
         </div>   
     </div>
+    <div class="divViewAll">
+        <button  class="btn  cart viewall">View All</button>
+    </div>
+<!--Quote Slider Start-->
+    <div class="container-fluid QuoteSlider">  
+ 
+        <div class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselSliderQuote" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselSliderQuote" data-slide-to="1"></li>
+            <li data-target="#carouselSliderQuote" data-slide-to="2"></li>
+        </ol>
+        
+        <div class="carousel-inner ciquote">
+          
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <img src="{% static 'images/chef2.jpg' %}"  style="height: 200px;width: 150px; padding-top: 30px;" class="removeImage" />
+                        </div>
+                        <div class="col-lg-9">
+                            <blockquote class="text-center mainquote">  
+                                <p class="Quote"><i class="fas fa-quote-left DoubleQuoteStart" aria-hidden="true" ></i>If more of us valued food and cheer and song above hoarded gold,it would be merrier world <i class="fas fa-quote-right DoubleQuoteEnd" aria-hidden="true"></i></p>
+                                <p class="Quote">- J.R.R. Tolkien</p>
+                            </blockquote>
+                        </div>
+                    </div>    
+                </div>   
+            </div>
+            <div class="carousel-item ">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <blockquote class="text-center mainquote">
+                                <p class="Quote"><i class="fas fa-quote-left DoubleQuoteStart" aria-hidden="true" ></i>One cannot think well, love well, sleep well, if one has not dined well <i class="fas fa-quote-right DoubleQuoteEnd" aria-hidden="true"></i></p>
+                                <p class="Quote">- Virginia Woolf, A Room of One's Own</p>
+                            </blockquote>
+                        </div>
+                        
+                        <div class="col-lg-3">
+                            <img src="{% static 'images/food2.jpg' %}"  style="height: 200px;width: 150px; padding-top: 20px;" class="removeImage" />
+                        </div>
+                        
+                    </div>    
+                </div>
+            </div>
+            <div class="carousel-item ">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <img src="{% static 'images/chef3.jpg' %}"  style="height: 250px;width: 175px; padding-top: 20px;" class="removeImage" />
+                        </div>
+                        <div class="col-lg-9">
+                            <blockquote class="text-center mainquote">
+                                <p class="Quote"><i class="fas fa-quote-left DoubleQuoteStart" aria-hidden="true" ></i>One cannot think well, love well, sleep well, if one has not dined well <i class="fas fa-quote-right DoubleQuoteEnd" aria-hidden="true"></i></p>
+                                <p class="Quote">- Virginia Woolf, A Room of One's Own</p>
+                            </blockquote>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+        </div>
+        <div>
+            <a class="carousel-control-prev" href="#carouselSliderQuote" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselSliderQuote" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true" ></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        </div>
+    </div>
+       <!--Quote Slider End-->
+    
+    <!--Offer Start-->
+    <div class="container-fluid" style="margin-top: 20px;" >
+        <!--Carousel Wrapper-->
+        <div>
+            <p style="font-family: 'Roboto', sans-serif;font-size: 25px;">Some Offers For You</p>
+        </div>
+        <div  class="carousel slide carousel-multi-item mainCoupon" data-ride="carousel">
+          <!--Indicators-->
+          <div>
+            <ol class="carousel-indicators">
+              <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+              <li data-target="#multi-item-example" data-slide-to="1"></li>
+            </ol>
+          </div>
+            <!--/.Indicators-->
+      
+            <!--Slides-->
+          <div class="carousel-inner " role="listbox">
+            <!--First slide-->
+            <div class="carousel-item active ">
+              <div class="col-md-3 " style="float:left">
+              <div class="card mb-2 couponCol">
+                  <img class="card-img-top couponImg"
+                  src="{% static 'images/coupon1.jpg' %}">
+                  <div class="card-body">
+                    <h4 class="card-title couponName">Faasos</h4>
+                    <p class="card-text couponOff">Pay Using Paytm and get 25/- Cashback.</p>
+                        <a><button class="btn couponBtn">Book A Table</button></a> 
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3" style="float:left">
+                <div class="card mb-2 couponCol">
+                  <img class="card-img-top couponImg"
+                  src="{% static 'images/coupon2.jpeg' %}">
+                  <div class="card-body">
+                    <h4 class="card-title couponName">Somkin Joe's</h4>
+                    <p class="card-text couponOff">Get 25% Off on bill over 350/-</p>
+                    <a><button class="btn couponBtn">Book A Table</button></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3" style="float:left">
+                <div class="card mb-2 couponCol">
+                  <img class="card-img-top couponImg"
+                  src="{% static 'images/coupon3.jpg' %}">
+                  <div class="card-body">
+                    <h4 class="card-title couponName">Dominos</h4>
+                    <p class="card-text couponOff">Get 2 Medium Pizzas at 199/- each.</p>
+                    <a><button class="btn couponBtn">Book A Table</button></a>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-3" style="float:left">
+                <div class="card mb-2 couponCol">
+                  <img class="card-img-top couponImg"
+                  src="{% static 'images/coupon4.jpg' %}">
+                    <div class="card-body">
+                      <h4 class="card-title couponName">Kilo Biryani</h4>
+                      <p class="card-text couponOff">Order any 2 Biryani & get 25% Cashback.</p>
+                      <a><button class="btn couponBtn">Book A Table</button></a>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <!--/.First slide-->
+      
+            <!--Second slide-->
+            <div class="carousel-item">
+              <div class="col-md-3" style="float:left">
+                <div class="card mb-2 couponCol">
+                  <img class="card-img-top couponImg"
+                  src="{% static 'images/coupon5.jpg' %}">
+                  <div class="card-body">
+                    <h4 class="card-title couponName">KFC</h4>
+                    <p class="card-text couponOff">12Pc Chicken Strips+4 Dips for 350/-Only.</p>
+                    <a><button class="btn couponBtn">Book A Table</button></a>
+                  </div>
+                </div>
+              </div>
+      
+              <div class="col-md-3" style="float:left">
+                <div class="card mb-2 couponCol">
+                  <img class="card-img-top couponImg"
+                  src="{% static 'images/coupon6.jpg' %}">
+                  <div class="card-body">
+                    <h4 class="card-title couponName">Burger King</h4>
+                    <p class="card-text couponOff">Get 2 Flame Grilled Cheese Burger at 125/-.</p>
+                    <a><button class="btn couponBtn">Book A Table</button></a>
+                  </div>
+                </div>
+              </div>
+      
+              <div class="col-md-3" style="float:left">
+                <div class="card mb-2 couponCol">
+                  <img class="card-img-top couponImg"
+                  src="{% static 'images/coupon7.jpg' %}">
+                  <div class="card-body">
+                    <h4 class="card-title couponName">McDonalds</h4>
+                    <p class="card-text couponOff">Free McVeggie/McChicken on order over 299/-.</p>
+                    <a><button class="btn couponBtn">Book A Table</button></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3" style="float:left">
+                <div class="card mb-2 couponCol">
+                  <img class="card-img-top couponImg"
+                  src="{% static 'images/coupon7.jpg' %}">
+                  <div class="card-body">
+                    <h4 class="card-title couponName">McDonalds</h4>
+                    <p class="card-text couponOff">Free McVeggie/McChicken on order over 299/-.</p>
+                    <a><button class="btn couponBtn">Book A Table</button></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--/.Second slide-->
+          </div>
+          <!--/.Slides-->
+        </div>
+        <!--/.Carousel Wrapper-->
+      </div>
+      
+    <!--Offer End-->      
+    <!--Required Styles-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    
+<!--Body End-->
 </body>
+<!--Footer Start-->
+<footer class="page-footer font-small unique-color-dark" style="background-color:#212121;margin-bottom: 10px;">
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left mt-5" ">
+        <!-- Grid row -->
+        <div class="row mt-3 footheader" >
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                <!-- Content -->
+                <h6 class="text-uppercase font-weight-bold footerHeaderColor" >Company name</h6>
+                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto footerHeaderColorLine" >
+                <p class="FooterCompanyInfo">Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+            <!-- Grid column -->
+            <!-- Grid column -->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                <!-- Links -->
+                <h6 class="text-uppercase font-weight-bold footerHeaderColor">Products</h6>
+                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto footerHeaderColorLine" style="width: 60px;">
+                <p>
+                    <a href="#!">MDBootstrap</a>
+                </p>
+                <p>
+                    <a href="#!">MDWordPress</a>
+                </p>
+                <p>
+                    <a href="#!">BrandFlow</a>
+                </p>
+                <p>
+                    <a href="#!">Bootstrap Angular</a>
+                </p>
+            </div>
+            <!-- Grid column -->
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                <!-- Links -->
+                <h6 class="text-uppercase font-weight-bold footerHeaderColor">Useful links</h6>
+                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto footerHeaderColorLine" style="width: 60px;">
+                <p>
+                    <a href="#!">Your Account</a>
+                </p>
+                <p>
+                    <a href="#!">Become an Affiliate</a>
+                </p>
+                <p>
+                    <a href="#!">Shipping Rates</a>
+                </p>
+                <p>
+                    <a href="#!">Help</a>
+                </p>
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 FooterContactInfo">
+
+                <!-- Links -->
+                <h6 class="text-uppercase font-weight-bold footerHeaderColor">Contact</h6>
+                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto footerHeaderColorLine" style="width: 60px;">
+                <p>
+                    <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+                <p>
+                    <i class="fas fa-envelope mr-3"></i> info@example.com</p>
+                <p>
+                    <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+                <p>
+                    <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+    </div>
+    <!-- Footer Links -->
+    <div style="background-color: #6351ce;">
+        <div class="container">
+            <!-- Grid row-->
+            <div class="row py-4 d-flex align-items-center">
+                <!-- Grid column -->
+                <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+                    <h6 class="mb-0 FooterCompanyInfo" style="color: black;" >Get connected with us on social networks!</h6>
+                </div>
+                <!-- Grid column -->
+                <!-- Grid column -->
+                <div class="col-md-6 col-lg-7 text-center text-md-right">
+                    <!-- Facebook -->
+                    <a class="fb-ic">
+                        <i class="fab fa-facebook-f white-text mr-4"> </i>
+                    </a>
+                    <!-- Twitter -->
+                    <a class="tw-ic">
+                        <i class="fab fa-twitter white-text mr-4"> </i>
+                    </a>
+                    <!-- Google +-->
+                    <a class="gplus-ic">
+                        <i class="fab fa-google-plus-g white-text mr-4"> </i>
+                    </a>
+                    <!--Linkedin -->
+                    <a class="li-ic">
+                        <i class="fab fa-linkedin-in white-text mr-4"> </i>
+                    </a>
+                    <!--Instagram-->
+                    <a class="ins-ic">
+                        <i class="fab fa-instagram white-text"> </i>
+                    </a>
+
+                </div>
+                <!-- Grid column -->
+            </div>
+            <!-- Grid row-->
+        </div>
+    </div>
+</footer>
 </html>

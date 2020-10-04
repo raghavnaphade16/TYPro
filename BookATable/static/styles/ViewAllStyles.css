@@ -1,0 +1,162 @@
+.containerViewAll{
+    height: 24em;
+
+}
+.myCart{
+    height: 23rem;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    padding: 13px 35px 17px 35px;
+    cursor: pointer;
+    
+}
+
+.myCart:hover{
+transform: scale(1.05);
+box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+border-color: #2196F3;
+}
+.cbody{
+text-align:center;
+}
+.restnamestyle{
+    text-align: center;
+    font-family: 'Roboto', sans-serif;font-size: 22px; 
+    height: 50px;
+}
+.restaddrstyle{
+text-align: center;
+font-family: 'Open Sans', sans-serif;font-size: 13px;
+margin-bottom: 10px;
+}
+.indexStar{
+font-size: 20px; color: Dodgerblue; 
+
+}
+.myBtn{
+font-family: 'Fredoka One', cursive;font-size: 20px; background-color: #D50000;color: white;
+margin-top: -10px;
+}
+.divViewAll{
+text-align: center;
+margin-top: 1px;
+}
+.viewall{
+border-radius: 4px;
+background: #fff;
+box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+cursor: pointer;
+font-family: 'Fredoka One', cursive;font-size: 25px; 
+background-color:#B71C1C;
+color: white;
+ width: 400px;
+ margin: 1px;
+}
+.viewall:hover{
+transform: scale(1.05);
+border-color: #fff;
+color: #fff;
+}
+.indexCarousel-bg-size{
+    width: 100%;
+    max-height: 400px;
+    opacity: 0.9;
+}
+.MainFilter{
+    margin-top: 10px;
+    
+    height: 150px;
+}
+.FilterBtn{
+    font-family: 'Fredoka One', cursive;font-size: 20px; 
+    background-color: white;
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+}
+.filterLogo{
+ margin-right: 10px;
+}
+.ciquote{
+    height: 16em;
+    margin-top: 50px;
+    border:3px solid #cecece;
+    border-radius: 25px;
+    border-color: red;
+}
+.mainquote{
+    margin-top: 20px;
+    padding: 5px 150px;
+    position: relative;
+    font-family: 'Dosis', sans-serif;
+    font-size: 28px;
+    text-align: center;
+    color: black;
+}
+.DoubleQuoteStart{
+    font-size: 40px; padding: 10px;
+}
+.DoubleQuoteEnd{
+    font-size: 40px; padding: 10px;
+}
+.Quote{
+    font-size: 30px;
+    text-align: center;
+}
+
+.couponImg{
+    width: 240px;
+    height: 215px;
+    padding-left: 50px;
+    padding-top: 10px;
+  }
+  .couponCol{
+    border:3px solid #cecece;
+    height: 25em;
+    text-align: center;
+  }
+  .couponName{
+    text-align: center;
+    font-family: 'Roboto', sans-serif;font-size: 22px; 
+    height: 25px;
+  }
+  .couponOff{
+    height: 40px;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;font-size: 13px;
+    margin-bottom: 10px;
+  }
+  .couponBtn{
+    font-family: 'Fredoka One', cursive;font-size: 20px;
+    background-color:#B71C1C;
+    color: white;
+    height: 50px;
+  }
+  .btn.myCBtn{
+    font-family: 'Fredoka One', cursive;font-size: 20px;
+    background-color:#B71C1C;
+    color: white;
+    height: 50px;
+  }
+  .couponBtn:hover{
+    transform: scale(1.05);
+    border-color: #fff;
+    color: #fff;
+    }
+
+.footerHeaderColor{
+    color: #FFFFFF;font-size: 20px;
+    padding-top: 20px;
+}   
+.footerHeaderColorLine{
+    width: 60px;background-color: #FFFFFF;
+}
+.FooterCompanyInfo{
+    font-family: 'Source Sans Pro', sans-serif;
+            color: #FFFFFF;
+            font-size: 18px;
+}
+.FooterContactInfo{
+    color: #FFFFFF;
+}

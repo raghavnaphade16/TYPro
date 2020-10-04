@@ -1,11 +1,321 @@
+{% load static %}
+{% static "images" as baseUrl  %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<title></title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/restInfo.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="{% static 'js/restInfo.js' %}"></script>
+    
 </head>
 <body>
-    
+	<div class="container">
+		<div class="hotelgrid">
+			<div class="hotelname">
+				<h3>Hotel {{rest.RestName}}</h3>
+				<h6>{{rest.RestAddr}}</h6>
+			</div>
+			<div class="hoteldetails">
+				<div id="carouselHotelImages" class="carousel slide" data-ride="carousel">
+					<ol class="carousel-indicators">
+						<li data-target="#carouselHotelImages" data-slide-to="0" class="active"></li>
+    					<li data-target="#carouselHotelImages" data-slide-to="1"></li>
+    				</ol>
+    				<div class="carousel-inner">
+    					<div class="carousel-item active">
+    						<img src="{% static 'images/bg.jpg' %}">
+    					</div>
+    					<div class="carousel-item">
+    						<img src="{% static 'images/bghotel.jpg' %}">
+    					</div>
+    				</div>
+    				<a class="carousel-control-prev" href="#carouselHotelImages" role="button" data-slide="prev">
+    					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    					<span class="sr-only">Previous</span>
+  					</a>
+  					<a class="carousel-control-next" href="#carouselHotelImages" role="button" data-slide="next">
+    					<span class="carousel-control-next-icon" aria-hidden="true" ></span>
+    					<span class="sr-only">Next</span>
+  					</a>
+  				</div>
+
+  				<!--Booking-->
+            	<div class="booking-widget">
+            		<div class="bg-white">
+            			<h4><p>Book A Table For:</p></h4>
+            			<form>
+            				<label><h6>Date:</h6></label>
+            					<input type="Date" name="date">
+            				<label><h6>Time:</h6></label>
+            					<input type="Time" name="time"><br><br>
+            				<label for="guests"><h6>No. of Guests:</h6></label>
+            					<select name="guests">
+            						<option value="1 Guest">1 Guest</option>
+            						<option value="2 Guests">2 Guests</option>
+            						<option value="3 Guests">3 Guests</option>
+            						<option value="4 Guests">4 Guests</option>
+            						<option value="5 Guests">5 Guests</option>
+            						<option value="6 Guests">6 Guests</option>
+            						<option value="7 Guests">7 Guests</option>
+            						<option value="8 Guests">8 Guests</option>
+            						<option value="9 Guests">9 Guests</option>
+            						<option value="10 Guests">10 Guests</option>
+            					</select>
+            			</form>
+            		</div>
+            	</div>
+
+  				<div class="hotelinfo">
+  					<h3><center>Restaurant Information</h3></center>  <p>Erandwane, Karve Nagar, Pune</p>
+  					<h6>Rs.1000 for three approx.</h6>
+  					<h6>Pure Veg.</h6>
+  					<h6>Timings: 10:00 AM to 11:00 PM</h6>
+  				</div>
+
+  				<!--Menu Card-->
+  				<div class="menudetails">
+          			<div class="section-title">
+          				<h2><center>Check our tasty <span>Menu</span></center></h2>
+        			</div>
+        			<div class="row menu-container">
+        				<div class="col-lg-6 menu-item filter-starters">
+        					<div class="menu-content">
+              					Pineapple Raitha.......<span>150/-</span>
+            					<div class="quantity">
+            						<button class='btn btn-decr' type="button"><b> - </b></button>
+            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
+            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
+            					</div>
+            				</div>
+            			</div>
+
+            			<div class="col-lg-6 menu-item filter-starters">
+        					<div class="menu-content">
+              					Hara Bara Kabab.......<span>180/-</span>
+              					<div class="quantity">
+            						<button class='btn btn-decr' type="button"><b> - </b></button>
+            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
+            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
+            					</div>
+            				</div>
+            			</div>
+
+            			<div class="col-lg-6 menu-item filter-starters">
+        					<div class="menu-content">
+              					Tandoori Aloo.......<span>170/-</span>
+              					<div class="quantity">
+            						<button class='btn btn-decr' type="button"><b> - </b></button>
+            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
+            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
+            					</div>
+            				</div>
+            			</div>
+
+            			<div class="col-lg-6 menu-item filter-starters">
+        					<div class="menu-content">
+              					Paneer Tikka.......<span>200/-</span>
+              					<div class="quantity">
+            						<button class='btn btn-decr' type="button"><b> - </b></button>
+            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
+            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
+            					</div>
+            				</div>
+            			</div>
+
+            			<div class="col-lg-6 menu-item filter-starters">
+        					<div class="menu-content">
+              					Tandoori Platter.......<span>400/-</span>
+              					<div class="quantity">
+            						<button class='btn btn-decr' type="button"><b> - </b></button>
+            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
+            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
+            					</div>
+            				</div>
+            			</div>
+
+            			<div class="col-lg-6 menu-item filter-main">
+        					<div class="menu-content">
+              					Paneer Butter Masala.......<span>200/-</span>
+              					<div class="quantity">
+            						<button class='btn btn-decr' type="button"><b> - </b></button>
+            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
+            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
+            					</div>
+            				</div>
+            			</div>
+
+            			<div class="col-lg-6 menu-item filter-main">
+        					<div class="menu-content">
+              					Paneer Tikka Masala.......<span>210/-</span>
+              					<div class="quantity">
+            						<button class='btn btn-decr' type="button"><b> - </b></button>
+            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
+            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
+            					</div>
+            				</div>
+            			</div>
+
+            			<div class="col-lg-6 menu-item filter-main">
+        					<div class="menu-content">
+              					Veg Handi.......<span>190/-</span>
+              					<div class="quantity">
+            						<button class='btn btn-decr' type="button"><b> - </b></button>
+            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
+            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
+            					</div>
+            				</div>
+            			</div>
+
+            			<div class="col-lg-6 menu-item filter-main">
+        					<div class="menu-content">
+              					Veg Maratha.......<span>190/-</span>
+              					<div class="quantity">
+            						<button class='btn btn-decr' type="button"><b> - </b></button>
+            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
+            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
+            					</div>
+            				</div>
+            			</div>
+
+            			<div class="col-lg-6 menu-item filter-main">
+        					<div class="menu-content">
+              					Bhendi Masala.......<span>160/-</span>
+              					<div class="quantity">
+            						<button class='btn btn-decr' type="button"><b> - </b></button>
+            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
+            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
+            					</div>
+            				</div>
+            			</div>
+
+            			<div class="col-lg-6 menu-item filter-main">
+        					<div class="menu-content">
+              					Mix Veg.......<span>150/-</span>
+              					<div class="quantity">
+            						<button class='btn btn-decr' type="button"><b> - </b></button>
+            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
+            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
+            					</div>
+            				</div>
+            			</div>
+
+            			<div class="col-lg-6 menu-item filter-main">
+        					<div class="menu-content">
+              					Aloo Mattar.......<span>150/-</span>
+              					<div class="quantity">
+            						<button class='btn btn-decr' type="button"><b> - </b></button>
+            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
+            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
+            					</div>
+            				</div>
+            			</div>
+
+            			<div class="col-lg-6 menu-item filter-main">
+        					<div class="menu-content">
+              					Veg Kolhapuri.......<span>160/-</span>
+              					<div class="quantity">
+            						<button class='btn btn-decr' type="button"><b> - </b></button>
+            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
+            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
+            					</div>
+            				</div>
+            			</div>
+
+            			<div class="col-lg-6 menu-item filter-main">
+        					<div class="menu-content">
+              					Veg Hyderabadi.......<span>180/-</span>
+              					<div class="quantity">
+            						<button class='btn btn-decr' type="button"><b> - </b></button>
+            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
+            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
+            					</div>
+            				</div>
+            			</div>
+
+            			<div class="col-lg-6 menu-item filter-main">
+        					<div class="menu-content">
+              					Dal Tadka.......<span>140/-</span>
+              					<div class="quantity">
+            						<button class='btn btn-decr' type="button"><b> - </b></button>
+            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
+            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
+            					</div>
+            				</div>
+            			</div>
+
+            			<div class="col-lg-6 menu-item filter-main">
+        					<div class="menu-content">
+              					Jeera Rice.......<span>120/-</span>
+              					<div class="quantity">
+            						<button class='btn btn-decr' type="button"><b> - </b></button>
+            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
+            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
+            					</div>
+            				</div>
+            			</div>
+
+            			<div class="col-lg-6 menu-item filter-main">
+        					<div class="menu-content">
+              					Plain Rice.......<span>100/-</span>
+              					<div class="quantity">
+            						<button class='btn btn-decr' type="button"><b> - </b></button>
+            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
+            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
+            					</div>
+            				</div>
+            			</div>
+
+            			<div class="col-lg-6 menu-item filter-main">
+        					<div class="menu-content">
+              					Curd Rice.......<span>150/-</span>
+              					<div class="quantity">
+            						<button class='btn btn-decr' type="button"><b> - </b></button>
+            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
+            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
+            					</div>
+            				</div>
+            			</div>
+
+            			<div class="col-lg-6 menu-item filter-main">
+        					<div class="menu-content">
+              					Veg Pulav.......<span>180/-</span>
+              					<div class="quantity">
+            						<button class='btn btn-decr' type="button"><b> - </b></button>
+            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
+            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
+            					</div>
+            				</div>
+            			</div>
+
+            			<div class="col-lg-6 menu-item filter-main">
+        					<div class="menu-content">
+              					Paneer Pulav.......<span>200/-</span>
+              					<div class="quantity">
+            						<button class='btn btn-decr' type="button"><b> - </b></button>
+            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
+            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
+            					</div>
+            				</div>
+            			</div>
+            		</div>
+            	</div>
+  			</div>
+		</div>
+	</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static 'js/restInfo.js' %}"></script>
 </body>
 </html>

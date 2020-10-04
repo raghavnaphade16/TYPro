@@ -1,0 +1,49 @@
+{% load static %}
+{% static "images" as baseUrl  %}
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&family=Open+Sans:ital,wght@1,600&display=swap&family=Courgette&display=swa&family=Courgette&display=swap&family=Secular+One&family=Source+Sans+Pro:ital,wght@1,700&display=swap&family=Dosis:wght@800&display=swap&family=Courgette&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/ViewAllStyles.css' %}">
+     <link rel="stylesheet" type="text/css" href="{% static 'styles/footer.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
+<style>
+    .MainFilter{
+        
+        border:3px solid #cecece;
+        height: 200px;
+    }
+    .FilterBtn{
+        font-family: 'Fredoka One', cursive;font-size: 20px; 
+        background-color: white;
+        box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    }
+    .filterLogo{
+     margin-right: 10px;
+    }
+</style>
+</head>
+    <div class="container-fluid MainFilter" >
+        <div>
+            <p style="font-family: 'Roboto', sans-serif;font-size: 25px;">What are you looking for?</p>
+        </div>
+        <div class="row ">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3" >
+                <button type="button" class="btn  btn-lg btn-block FilterBtn" ><img class="filterLogo" src="{% static 'images/resizerestaurantIcon.png' %}" class="removeImage" />Near Me</button>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3" >
+                <button type="button" class="btn  btn-lg btn-block FilterBtn" style="background-color: white;"><img class="filterLogo" src="{% static 'images/resizeveg.png' %}" class="removeImage" />Veg</button>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3" >
+                <button type="button" class="btn  btn-lg btn-block FilterBtn" style="background-color: white;"><img class="filterLogo" src="{% static 'images/resizeNV.png' %}" class="removeImage" />Non Veg </button>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3" >
+                <button type="button" class="btn  btn-lg btn-block FilterBtn" style="background-color: white;"><img class="filterLogo" src="{% static 'images/resizerestaurantIcon.png' %}" class="removeImage" />Both</button>
+            </div>
+        </div>   
+    </div>

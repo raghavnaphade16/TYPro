@@ -6,11 +6,9 @@ from .models import Customer
 import datetime
 from .forms import *
 # Create your views here.
-def home(request):
-    
+def home(request):    
     rests= Restaurent.objects.all()  
-    for rest in rests:
-        print(rest)
+    #return render(request,'quotesslider.html')   
     return render(request,'home.html',{'rests':rests})
 
 def login(request):
@@ -19,6 +17,7 @@ def login(request):
         password=request.POST['exampleInputPassword1']
 
         if Customer.objects.filter(email=username).exists() and Customer.objects.filter(password=password).exists() :
+        
             return redirect('/')
         else:
             print("Invalid credentials")
@@ -61,7 +60,9 @@ def registration(request):
         return render(request,'registration.html')
          #   rest= Restaurent.objects.RestId
 
-def restInfo(request,myId):
-    rest1= Restaurent.objects.filter(RestId=myId)
-    print(str(rest1))
-    render(request,'restInfo.html')
+
+
+def RestInfo(request,myid):
+    rests= Restaurent.objects.filter(RestId=myid)
+    print(rests)
+    return render(request, "RestInfo.html",{'rest':rests[0]})
