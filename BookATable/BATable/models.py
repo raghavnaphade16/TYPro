@@ -1,39 +1,38 @@
 from django.db import models
 
-# Create your models here.
 class Customer(models.Model):
-    firstName= models.CharField(max_length=100)
-    lastName= models.CharField(max_length=100)
-    email= models.CharField(max_length=100)
-    mobileNo= models.IntegerField() 
-    city=models.TextField()
-    birthDate=models.DateField()
-    password = models.CharField(max_length=50)
+    custId=models.CharField(primary_key=True,max_length=20)
+    custFirstName= models.CharField(max_length=100)
+    custLastName= models.CharField(max_length=100)
+    custEmail= models.CharField(max_length=50)
+    cutMobileNo= models.BigIntegerField() 
+    custCity=models.TextField(max_length=30)
+    custPassword = models.CharField(max_length=50)
 
     class Meta:
       db_table = "customer" 
 
 
-class Restaurent(models.Model):
-    RestId=models.IntegerField(primary_key=True)
-    RestName= models.CharField(max_length=100)
-    OwnerName= models.CharField(max_length=100)
-    RestEmail= models.CharField(max_length=100)
-    MobileNo1= models.IntegerField()
-    MobileNo2= models.IntegerField() 
-    RestAddr=models.TextField(max_length=200)
-    RestImg=models.ImageField(upload_to='images/', null=True, verbose_name="") 
-    
-    
-
+class Restaurant(models.Model):
+    restId=models.CharField(primary_key=True,max_length=50)
+    restName= models.CharField(max_length=100)
+    restType=models.CharField(max_length=10)
+    restOwnerName= models.CharField(max_length=100)
+    restEmail= models.CharField(max_length=100)
+    restMobileNo1= models.BigIntegerField()
+    restLandLineNo= models.BigIntegerField() 
+    restAddress=models.TextField(max_length=200)
+    restImg=models.ImageField(upload_to='images/', null=True, verbose_name="") 
+  
     class Meta:
-      db_table = "Restaurent" 
+      db_table = "Restaurant" 
 
 class Menu(models.Model):
-    MenuId=models.IntegerField(primary_key=True)
-    MenuName= models.CharField(max_length=100)
-    MenuPrice= models.IntegerField()
-    RestId= models.ForeignKey(Restaurent,on_delete=models.CASCADE); 
+    menuId=models.CharField(primary_key=True,max_length=50)
+    menuName= models.CharField(max_length=100)
+    menuType=models.CharField(max_length=100)
+    menuPrice= models.IntegerField()
+    restId= models.ForeignKey(Restaurant,on_delete=models.CASCADE); 
     
 
     class Meta:

@@ -3,5 +3,5 @@ from .models import *
 
 class ImageForm(forms.ModelForm):
     class Meta:
-        model= Restaurent
-        fields= ["RestImg", "RestImg"]
+        model= Restaurant
+        fields= ["restImg", "restImg"]

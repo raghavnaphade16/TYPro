@@ -8,14 +8,15 @@ document.querySelector(".btn-decr").setAttribute("disabled", "disabled");
     document.querySelector(".btn-incr").addEventListener("click", function()
     {
       //getting value of input
-      valueCount = document.getElementById("quan").value;
-     
-
+      var idStr= this.id.toString();
+      valueCount = document.getElementById("quan{{forloop.counter}}").value;
+      var i = this.attr('start');
+      i++
       //input increment
-      valueCount++;
+      valueCount=i
 
       //setting increment value
-      document.getElementById("quan").value = valueCount;
+      document.getElementById("quan").value = i;
       
       if(valueCount > 1)
       {

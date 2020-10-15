@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'BookATable.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Main_Db',
+        'NAME': 'Test_DB',
         'USER':'postgres',
         'PASSWORD':  'India@8793',
         'HOST':'localhost',

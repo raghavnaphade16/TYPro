@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% block js %}
+    <script>
+        console.log("Server started and collections cleared.");
+        if(localStorage.getItem('cart')==null){
+            var cart={};
+            console.log("Cart Created")
+            
+        }
+        else{
+            console.log(jsonObject.canApprove);
+            cart=JSON.parse(localStorage.getItem('cart'));
+            console.log("Cart Send")
+        }
+        
+        $(document).ready(function() {
+            
+            $(".btn-decr").click(function () {
+                
+                console.log("Clicked")
+                var idStr= this.id.toString();
+                console.log(idStr);
+        
+                
+               
+            });
+          });
+          
+    </script>
+    {% endblock %}
+</head>
+<body>
+    {% for menu in menus %}
+						
+							<div class="col-lg-6 menu-item filter-starters">
+							
+								<div class="menu-content">
+
+									{{menu.menuName}}.......<span>{{menu.menuPrice}}/-</span>
+									<div class="quantity" id=rm{{menu.menuId}}>
+										<button id="{{forloop.counter}}" class='btn btn-decr cart'  type="button" ><b> - </b></button>
+											<input style='padding:0 0 0 2px;width:75px;' class="quan"  id="{{forloop.counter}}" type='number' value='0' disabled/>
+										<button id="{{forloop.counter}}" class='btn btn-incr cart' type="button"><b> + </b></button><br>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+</body>
+
+</html>

@@ -2,14 +2,15 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
-from .models import Customer
+from .models import *
 import datetime
 from .forms import *
 # Create your views here.
 def home(request):    
-    rests= Restaurent.objects.all()  
+    rests= Restaurant.objects.all()  
     #return render(request,'quotesslider.html')   
     return render(request,'home.html',{'rests':rests})
+    return render(request,'home.html')
 
 def login(request):
     if request.method == 'POST':
@@ -58,11 +59,16 @@ def registration(request):
         return redirect('/')
     else:
         return render(request,'registration.html')
-         #   rest= Restaurent.objects.RestId
+         #   rest= Restaurant.objects.RestId
 
 
 
 def RestInfo(request,myid):
-    rests= Restaurent.objects.filter(RestId=myid)
-    print(rests)
-    return render(request, "RestInfo.html",{'rest':rests[0]})
+    rests= Restaurant.objects.filter(restId=myid)
+    #print(rests)
+    data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 
+    menus=Menu.objects.all().filter(restId=myid)
+    '''for menu in menus:
+        print(menu.menuId)'''
+    #return render(request,"test.html",{'context':data,'menus':menus})
+    return render(request, "RestInfo.html",{'rest':rests[0],'menus':menus,'context':data})

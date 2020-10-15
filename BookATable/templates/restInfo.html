@@ -18,8 +18,8 @@
 	<div class="container">
 		<div class="hotelgrid">
 			<div class="hotelname">
-				<h3>Hotel {{rest.RestName}}</h3>
-				<h6>{{rest.RestAddr}}</h6>
+				<h3>Hotel {{rest.restName}} {{rest.restType}}</h3>
+				<h6>{{rest.restAddr}}</h6>
 			</div>
 			<div class="hoteldetails">
 				<div id="carouselHotelImages" class="carousel slide" data-ride="carousel">
@@ -56,17 +56,10 @@
             					<input type="Time" name="time"><br><br>
             				<label for="guests"><h6>No. of Guests:</h6></label>
             					<select name="guests">
-            						<option value="1 Guest">1 Guest</option>
-            						<option value="2 Guests">2 Guests</option>
-            						<option value="3 Guests">3 Guests</option>
-            						<option value="4 Guests">4 Guests</option>
-            						<option value="5 Guests">5 Guests</option>
-            						<option value="6 Guests">6 Guests</option>
-            						<option value="7 Guests">7 Guests</option>
-            						<option value="8 Guests">8 Guests</option>
-            						<option value="9 Guests">9 Guests</option>
-            						<option value="10 Guests">10 Guests</option>
-            					</select>
+									{% for i in context %}
+										<option value="{{i}}Guest">{{i}} Guest</option>
+									{% endfor %}
+									</select>
             			</form>
             		</div>
             	</div>
@@ -82,227 +75,28 @@
   				<div class="menudetails">
           			<div class="section-title">
           				<h2><center>Check our tasty <span>Menu</span></center></h2>
-        			</div>
+					</div>
+					<div>
+						<h6>Type</h6>
+					</div>
         			<div class="row menu-container">
-        				<div class="col-lg-6 menu-item filter-starters">
-        					<div class="menu-content">
-              					Pineapple Raitha.......<span>150/-</span>
-            					<div class="quantity">
-            						<button class='btn btn-decr' type="button"><b> - </b></button>
-            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
-            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
-            					</div>
-            				</div>
-            			</div>
+						
+						{% for menu in menus %}
+						
+							<div class="col-lg-6 menu-item filter-starters">
+							
+								<div class="menu-content">
 
-            			<div class="col-lg-6 menu-item filter-starters">
-        					<div class="menu-content">
-              					Hara Bara Kabab.......<span>180/-</span>
-              					<div class="quantity">
-            						<button class='btn btn-decr' type="button"><b> - </b></button>
-            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
-            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
-            					</div>
-            				</div>
-            			</div>
-
-            			<div class="col-lg-6 menu-item filter-starters">
-        					<div class="menu-content">
-              					Tandoori Aloo.......<span>170/-</span>
-              					<div class="quantity">
-            						<button class='btn btn-decr' type="button"><b> - </b></button>
-            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
-            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
-            					</div>
-            				</div>
-            			</div>
-
-            			<div class="col-lg-6 menu-item filter-starters">
-        					<div class="menu-content">
-              					Paneer Tikka.......<span>200/-</span>
-              					<div class="quantity">
-            						<button class='btn btn-decr' type="button"><b> - </b></button>
-            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
-            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
-            					</div>
-            				</div>
-            			</div>
-
-            			<div class="col-lg-6 menu-item filter-starters">
-        					<div class="menu-content">
-              					Tandoori Platter.......<span>400/-</span>
-              					<div class="quantity">
-            						<button class='btn btn-decr' type="button"><b> - </b></button>
-            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
-            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
-            					</div>
-            				</div>
-            			</div>
-
-            			<div class="col-lg-6 menu-item filter-main">
-        					<div class="menu-content">
-              					Paneer Butter Masala.......<span>200/-</span>
-              					<div class="quantity">
-            						<button class='btn btn-decr' type="button"><b> - </b></button>
-            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
-            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
-            					</div>
-            				</div>
-            			</div>
-
-            			<div class="col-lg-6 menu-item filter-main">
-        					<div class="menu-content">
-              					Paneer Tikka Masala.......<span>210/-</span>
-              					<div class="quantity">
-            						<button class='btn btn-decr' type="button"><b> - </b></button>
-            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
-            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
-            					</div>
-            				</div>
-            			</div>
-
-            			<div class="col-lg-6 menu-item filter-main">
-        					<div class="menu-content">
-              					Veg Handi.......<span>190/-</span>
-              					<div class="quantity">
-            						<button class='btn btn-decr' type="button"><b> - </b></button>
-            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
-            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
-            					</div>
-            				</div>
-            			</div>
-
-            			<div class="col-lg-6 menu-item filter-main">
-        					<div class="menu-content">
-              					Veg Maratha.......<span>190/-</span>
-              					<div class="quantity">
-            						<button class='btn btn-decr' type="button"><b> - </b></button>
-            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
-            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
-            					</div>
-            				</div>
-            			</div>
-
-            			<div class="col-lg-6 menu-item filter-main">
-        					<div class="menu-content">
-              					Bhendi Masala.......<span>160/-</span>
-              					<div class="quantity">
-            						<button class='btn btn-decr' type="button"><b> - </b></button>
-            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
-            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
-            					</div>
-            				</div>
-            			</div>
-
-            			<div class="col-lg-6 menu-item filter-main">
-        					<div class="menu-content">
-              					Mix Veg.......<span>150/-</span>
-              					<div class="quantity">
-            						<button class='btn btn-decr' type="button"><b> - </b></button>
-            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
-            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
-            					</div>
-            				</div>
-            			</div>
-
-            			<div class="col-lg-6 menu-item filter-main">
-        					<div class="menu-content">
-              					Aloo Mattar.......<span>150/-</span>
-              					<div class="quantity">
-            						<button class='btn btn-decr' type="button"><b> - </b></button>
-            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
-            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
-            					</div>
-            				</div>
-            			</div>
-
-            			<div class="col-lg-6 menu-item filter-main">
-        					<div class="menu-content">
-              					Veg Kolhapuri.......<span>160/-</span>
-              					<div class="quantity">
-            						<button class='btn btn-decr' type="button"><b> - </b></button>
-            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
-            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
-            					</div>
-            				</div>
-            			</div>
-
-            			<div class="col-lg-6 menu-item filter-main">
-        					<div class="menu-content">
-              					Veg Hyderabadi.......<span>180/-</span>
-              					<div class="quantity">
-            						<button class='btn btn-decr' type="button"><b> - </b></button>
-            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
-            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
-            					</div>
-            				</div>
-            			</div>
-
-            			<div class="col-lg-6 menu-item filter-main">
-        					<div class="menu-content">
-              					Dal Tadka.......<span>140/-</span>
-              					<div class="quantity">
-            						<button class='btn btn-decr' type="button"><b> - </b></button>
-            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
-            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
-            					</div>
-            				</div>
-            			</div>
-
-            			<div class="col-lg-6 menu-item filter-main">
-        					<div class="menu-content">
-              					Jeera Rice.......<span>120/-</span>
-              					<div class="quantity">
-            						<button class='btn btn-decr' type="button"><b> - </b></button>
-            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
-            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
-            					</div>
-            				</div>
-            			</div>
-
-            			<div class="col-lg-6 menu-item filter-main">
-        					<div class="menu-content">
-              					Plain Rice.......<span>100/-</span>
-              					<div class="quantity">
-            						<button class='btn btn-decr' type="button"><b> - </b></button>
-            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
-            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
-            					</div>
-            				</div>
-            			</div>
-
-            			<div class="col-lg-6 menu-item filter-main">
-        					<div class="menu-content">
-              					Curd Rice.......<span>150/-</span>
-              					<div class="quantity">
-            						<button class='btn btn-decr' type="button"><b> - </b></button>
-            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
-            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
-            					</div>
-            				</div>
-            			</div>
-
-            			<div class="col-lg-6 menu-item filter-main">
-        					<div class="menu-content">
-              					Veg Pulav.......<span>180/-</span>
-              					<div class="quantity">
-            						<button class='btn btn-decr' type="button"><b> - </b></button>
-            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
-            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
-            					</div>
-            				</div>
-            			</div>
-
-            			<div class="col-lg-6 menu-item filter-main">
-        					<div class="menu-content">
-              					Paneer Pulav.......<span>200/-</span>
-              					<div class="quantity">
-            						<button class='btn btn-decr' type="button"><b> - </b></button>
-            							<input style='padding:0 0 0 2px;width:75px;' id="quan" type='number' value='0' disabled/>
-            						<button class='btn btn-incr' type="button"><b> + </b></button><br>
-            					</div>
-            				</div>
-            			</div>
+									{{menu.menuName}}.......<span>{{menu.menuPrice}}/-</span>
+									<div class="quantity">
+										<button class='btn btn-decr' type="button" onclick="check(cnt='{{forloop.counter}}')"  ><b> - </b></button>
+											<input style='padding:0 0 0 2px;width:75px;'  id="quan" type='number' value='0' disabled/>
+										<button class='btn btn-incr' type="button"><b> + </b></button><br>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+								
             		</div>
             	</div>
   			</div>

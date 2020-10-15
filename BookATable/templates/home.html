@@ -211,12 +211,12 @@
             <div class="row ">
                 {% for rest in rests %}            
                     <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3"  >
-                        <a href="myRest/{{rest.RestId}}">
+                        <a href="myRest/{{rest.restId}}" style="color: #000000;">
                             <div class="card myCart">
-                                <img src="{{rest.RestImg.url}}" class="card-img-top cartImg" alt="...">
+                                <img src="{{rest.restImg.url}}" class="card-img-top cartImg" alt="...">
                                 <div class="card-body cbody" >
-                                    <h5 class="card-title restnamestyle" name="restName" >{{rest.RestName}}</h5>
-                                    <p class="card-text restaddrstyle" name="restAddr" >{{rest.RestAddr}}</p>
+                                    <h5 class="card-title restnamestyle" name="restName" >{{rest.restName}} {{rest.restType}}</h5>
+                                    <p class="card-text restaddrstyle" name="restAddr" >{{rest.restAddress}}</p>
                                     <div class="indexStar">
                                         <i class="fas fa-star" ></i>
                                         <i class="fas fa-star" ></i>
