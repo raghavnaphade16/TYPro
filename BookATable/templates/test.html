@@ -1,63 +1,122 @@
+{% load static %}
+{% static "images" as baseUrl  %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/restInfo.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="{% static 'js/test.js' %}"></script>
+  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    {% block js %}
-    <script>
-        console.log("Server started and collections cleared.");
-        if(localStorage.getItem('cart')==null){
-            var cart={};
-            console.log("Cart Created")
-            
+    <script type="text/javascript">
+        function getToken(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
         }
-        else{
-            console.log(jsonObject.canApprove);
-            cart=JSON.parse(localStorage.getItem('cart'));
-            console.log("Cart Send")
-        }
+        const csrftoken = getToken('csrftoken');
         
-        $(document).ready(function() {
-            
-            $(".btn-decr").click(function () {
-                
-                console.log("Clicked")
-                var idStr= this.id.toString();
-                console.log(idStr);
-        
-                
-               
-            });
-          });
-          
     </script>
-    {% endblock %}
+
+
 </head>
 <body>
-    {% for menu in menus %}
-						
-							<div class="col-lg-6 menu-item filter-starters">
-							
-								<div class="menu-content">
+    <!--Nav Bar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Book a Table</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about.html">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Topics
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Technology</a>
+                        <a class="dropdown-item" href="#">Web Development</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Support</a>
+                        <a class="dropdown-item" href="#">Write for us</a>                       
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Contact.html">Contact us</a>
+                        
+                        </li>                 
+            
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            
+            <div class="mx-2">
 
-									{{menu.menuName}}.......<span>{{menu.menuPrice}}/-</span>
-									<div class="quantity" id=rm{{menu.menuId}}>
-										<button id="{{forloop.counter}}" class='btn btn-decr cart'  type="button" ><b> - </b></button>
-											<input style='padding:0 0 0 2px;width:75px;' class="quan"  id="{{forloop.counter}}" type='number' value='0' disabled/>
-										<button id="{{forloop.counter}}" class='btn btn-incr cart' type="button"><b> + </b></button><br>
-									</div>
-								</div>
-							</div>
-						{% endfor %}
+                <!--   <button class="btn btn-success" data-toggle="modal" data-target="#SignUpModal">Sign Up</button>-->
+                <button class="btn btn-outline-success mx-1"  >Hello {{cust.custFirstName}}</button>
+                    <a href="{% url 'Payment' cust.custId   %}"><button class="btn btn-outline-success mx-1" >Cart</button></a>
+                <a href="{{logout}}"><button class="btn btn-outline-success mx-1" >Logout</button></a>
+            </div>
+        </div>
+    </nav>
+
+    <h1>Hello {{cust.custFirstName}}</h1>
+    <div class="row menu-container">
+						
+        {% for menu in menus %}
+        
+            <div class="col-lg-6 menu-item filter-starters">
+            
+                <div class="menu-content">
+                    <div class=" container-fluid quantity">
+                        <div class="row" style="margin-bottom: 10px;">
+                            <div class="col-md-9" >
+                                <p>{{menu.menuName}}<span>.......</span>  <span>{{menu.menuPrice}}/-</span> </p>											
+                            </div>
+                            <div class="col-md-3">
+                                <button data-menu="{{menu.menuId}}" data-user="{{cust.custId}}" data-action="add" class='btn info update-cart ' id="mybtn" style="border-color: #2196F3;color:black" type="button"><b> ADD </b></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+                
+    </div>  
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static 'js/test.js' %}"></script>
 
 </html>

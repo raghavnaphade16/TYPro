@@ -1,0 +1,239 @@
+/*
+.orderdetails{
+	margin-top: 40px;
+	height: 300px;
+	width: 500px;
+	border-width:3px;
+	box-shadow: 3px 3px 3px 3px #ccc;
+}
+.orderdetails h4{
+	margin-top: 60px;
+	margin-left: 20px;
+	font-family: 'Sansita Swashed', cursive;
+	font-size: 30px;
+}
+.orderdetails h5{
+	margin-left: 20px;
+	font-family: 'Lato', sans-serif;
+}
+#selectedmenu{
+	margin-top: 10px;
+	height: auto;
+	width: 500px;
+	border-width:3px;
+	box-shadow: 3px 3px 3px 3px #ccc;
+}
+.selectedmenu{
+	margin-top: 10px;
+	height: auto;
+	width: 500px;
+	border-width:3px;
+	box-shadow: 3px 3px 3px 3px #ccc;
+}
+.selectedmenu h4{
+	margin-top: 30px;
+	margin-left: 20px;
+	font-family: 'Sansita Swashed', cursive;
+	font-size: 30px;
+}
+.couponbutton{
+	margin-top: 40px;
+	margin-left: 20px;
+	font-family: 'Sansita Swashed', cursive;
+	font-size: 30px;
+
+}
+.billdetails{
+	margin-top: 40px;
+	height: 300px;
+	width: 500px;
+	border-width:3px;
+	box-shadow: 3px 3px 3px 3px #ccc;
+}
+.billdetails h5{
+	margin-top: 10px;
+	margin-left: 20px;
+	font-family: 'Lato', sans-serif;
+}
+.billdetails h4{
+	margin-top: 30px;
+	margin-left: 20px;
+	font-family: 'Sansita Swashed', cursive;
+	font-size: 30px;
+}
+.payment-gateway{
+	position: absolute;
+	top:150px;
+	right: 200px;
+	margin-right: 40px;
+	height: 350px;
+	width: 450px;
+	border-width:3px;
+	box-shadow: 3px 3px 3px 3px #ccc;
+}
+.payment-gateway h4{
+	margin-top: 30px;
+	margin-left: 20px;
+	font-family: 'Sansita Swashed', cursive;
+	font-size: 30px;
+}
+.payment-gateway h5{
+	margin-top: 10px;
+	margin-left: 20px;
+	font-family: 'Lato', sans-serif;
+}
+.booking-widget{
+	position: absolute;
+	top:50px;
+	right: 40px;
+	margin-right: 100px;
+	height: 200px;
+	width: 550px;
+	border-width:3px;
+	box-shadow: 3px 3px 3px 3px #ccc;
+}
+.booking-widget h4{
+	margin-top: 10px;
+	margin-left: 20px;
+	font-family: 'Sansita Swashed', cursive;
+}
+.booking-widget h6{
+	margin-left: 20px;
+	font-family: 'Lato', sans-serif;
+	font-size: 18px;
+}
+.booking-widget label{
+	margin-left: 20px;
+}
+.booking-widget input{
+	
+	padding: 5px;
+	font-size: 14px;
+
+}
+*/
+
+.orderdetails{
+	margin-top: 40px;
+	height: 300px;
+	width: 400px;
+	border-width:3px;
+	box-shadow: 3px 3px 3px 3px #ccc;
+}
+.orderdetails h4{
+	margin-top: 60px;
+	margin-left: 20px;
+	font-family: 'Sansita Swashed', cursive;
+	font-size: 30px;
+}
+.orderdetails h5{
+	margin-left: 20px;
+	font-family: 'Lato', sans-serif;
+}
+#selectedmenu{
+	margin-top: 10px;
+	height: auto;
+	width: 500px;
+	border-width:3px;
+	box-shadow: 3px 3px 3px 3px #ccc;
+}
+.selectedmenu{
+	margin-top: 10px;
+	height: auto;
+	width: 500px;
+	border-width:3px;
+	box-shadow: 3px 3px 3px 3px #ccc;
+}
+.selectedmenu h4{
+	margin-top: 30px;
+	margin-left: 20px;
+	font-family: 'Sansita Swashed', cursive;
+	font-size: 30px;
+}
+
+.couponbutton{
+	margin-top: 40px;
+	margin-left: 20px;
+	font-family: 'Sansita Swashed', cursive;
+	font-size: 30px;
+
+}
+.billdetails{
+	margin-top: 40px;
+	height: 300px;
+	width: 400px;
+	border-width:3px;
+	box-shadow: 3px 3px 3px 3px #ccc;
+}
+.billdetails h5{
+	margin-top: 10px;
+	margin-left: 20px;
+	font-family: 'Lato', sans-serif;
+}
+.billdetails h4{
+	margin-top: 30px;
+	margin-left: 20px;
+	font-family: 'Sansita Swashed', cursive;
+	font-size: 30px;
+}
+
+.booking-widget{
+	position: absolute;
+	top:50px;
+	right: 40px;
+	margin-right: 100px;
+	height: 200px;
+	width: 550px;
+	border-width:3px;
+	box-shadow: 3px 3px 3px 3px #ccc;
+}
+.booking-widget h4{
+	margin-top: 10px;
+	margin-left: 20px;
+	font-family: 'Sansita Swashed', cursive;
+}
+.booking-widget h6{
+	margin-left: 20px;
+	font-family: 'Lato', sans-serif;
+	font-size: 18px;
+}
+.booking-widget label{
+	margin-left: 20px;
+}
+.booking-widget input{
+	
+	padding: 5px;
+	font-size: 14px;
+
+}
+.payment-gateway{
+	position: absolute;
+	top:300px;
+	right: 200px;
+	margin-right: 40px;
+	height: 350px;
+	width: 450px;
+	border-width:3px;
+	box-shadow: 3px 3px 3px 3px #ccc;
+}
+.payment-gateway h4{
+	margin-top: 30px;
+	margin-left: 20px;
+	font-family: 'Sansita Swashed', cursive;
+	font-size: 30px;
+}
+.payment-gateway h5{
+	margin-top: 10px;
+	margin-left: 20px;
+	font-family: 'Lato', sans-serif;
+}
+
+.confirmbutton{
+	position: absolute;
+	top:700px;
+	right: 400px;
+	margin-right: 100px;
+	font-family: 'Sansita Swashed', cursive;
+	font-size: 30px;
+
+}

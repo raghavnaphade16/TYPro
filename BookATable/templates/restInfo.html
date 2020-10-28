@@ -11,10 +11,78 @@
     <link rel="stylesheet" type="text/css" href="{% static 'styles/restInfo.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
-    <script type="text/javascript" src="{% static 'js/restInfo.js' %}"></script>
-    
+	<script type="text/javascript" src="{% static 'js/test.js' %}"></script>
+	<script type="text/javascript">
+        function getToken(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrftoken = getToken('csrftoken');
+        
+    </script>
+
 </head>
 <body>
+	<!--Nav Bar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Book a Table</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about.html">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Topics
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Technology</a>
+                        <a class="dropdown-item" href="#">Web Development</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Support</a>
+                        <a class="dropdown-item" href="#">Write for us</a>                       
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Contact.html">Contact us</a>
+                        
+                        </li>                 
+            
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            
+            <div class="mx-2">
+                <!--   <button class="btn btn-success" data-toggle="modal" data-target="#SignUpModal">Sign Up</button>-->
+				{% if not cust.custId  %}
+					<button class="btn btn-outline-success mx-1"  >Hello </button>	
+				{% else %}
+					<button class="btn btn-outline-success mx-1"  >Hello {{cust.custFirstName}}</button>
+                	<a href="{% url 'Payment' cust.custId   %}"><button class="btn btn-outline-success mx-1" >Cart</button></a>
+            		<a href="{{logout}}"><button class="btn btn-outline-success mx-1" >Logout</button></a>
+				{% endif %}
+			</div>
+        </div>
+    </nav>
 	<div class="container">
 		<div class="hotelgrid">
 			<div class="hotelname">
@@ -46,24 +114,7 @@
   				</div>
 
   				<!--Booking-->
-            	<div class="booking-widget">
-            		<div class="bg-white">
-            			<h4><p>Book A Table For:</p></h4>
-            			<form>
-            				<label><h6>Date:</h6></label>
-            					<input type="Date" name="date">
-            				<label><h6>Time:</h6></label>
-            					<input type="Time" name="time"><br><br>
-            				<label for="guests"><h6>No. of Guests:</h6></label>
-            					<select name="guests">
-									{% for i in context %}
-										<option value="{{i}}Guest">{{i}} Guest</option>
-									{% endfor %}
-									</select>
-            			</form>
-            		</div>
-            	</div>
-
+            	
   				<div class="hotelinfo">
   					<h3><center>Restaurant Information</h3></center>  <p>Erandwane, Karve Nagar, Pune</p>
   					<h6>Rs.1000 for three approx.</h6>
@@ -86,18 +137,25 @@
 							<div class="col-lg-6 menu-item filter-starters">
 							
 								<div class="menu-content">
+									<div class=" container-fluid quantity">
+										<div class="row" style="margin-bottom: 10px;">
+											<div class="col-md-9" >
+												<p>{{menu.menuName}}<span>.......</span>  <span>{{menu.menuPrice}}/-</span> </p>											
+											</div>
+											{% if not cust.custId  %}
 
-									{{menu.menuName}}.......<span>{{menu.menuPrice}}/-</span>
-									<div class="quantity">
-										<button class='btn btn-decr' type="button" onclick="check(cnt='{{forloop.counter}}')"  ><b> - </b></button>
-											<input style='padding:0 0 0 2px;width:75px;'  id="quan" type='number' value='0' disabled/>
-										<button class='btn btn-incr' type="button"><b> + </b></button><br>
+											{% else %}
+												<div class="col-md-3">
+													<button data-menu="{{menu.menuId}}" data-user="{{cust.custId}}" data-action="add" class='btn info update-cart ' id="mybtn" style="border-color: #2196F3;color:black" type="button"><b> ADD </b></button>
+												</div>
+											{% endif %}
+										</div>
 									</div>
 								</div>
 							</div>
 						{% endfor %}
 								
-            		</div>
+					</div>
             	</div>
   			</div>
 		</div>
@@ -110,6 +168,6 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-<script type="text/javascript" src="{% static 'js/restInfo.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/test.js' %}"></script>
 </body>
 </html>

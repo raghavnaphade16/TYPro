@@ -1,0 +1,179 @@
+{% load static %}
+{% static "images" as baseUrl  %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Payment</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/payment.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
+
+	<script type="text/javascript" src="{% static 'js/test.js' %}"></script>
+	<script type="text/javascript">
+        function getToken(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrftoken = getToken('csrftoken');
+        
+    </script>
+
+</head>
+<body>
+	<div class="container">
+		<div class="paymentgrid">
+			<div class="orderdetails">
+				<h4>Order Details</h4>
+				<form>
+					<table>
+					<tr><td><label><h5>Hotel Name:-</h5></label></td>
+						<td><input type="text" name="hotel name" value="{{rest.restName}}"></td></tr><br>
+					<tr><td><label><h5>Customer Name:-</h5></label></td>
+						<td><input type="text" name="cust name" value="{{cust.custFirstName}}"></td></tr><br>
+					<tr><td><label><h5>Date & Time:-</h5></label></td>
+						<td><input type="text" name="datetime"></td></tr>
+					</table>
+				</form>
+			</div>
+			<div class="booking-widget">
+				<div class="bg-white">
+					<h4><p>Book A Table For:</p></h4>
+					{% if not order.orderId  %}
+						<form >
+					{% else %}
+						<form action="{% url 'FinalTransaction' order.orderId %}" role="form" method="POST">
+							{% csrf_token %} 
+							<label><h6>Date:</h6></label>
+								<input type="Date" name="date">
+							<label><h6>Time:</h6></label>
+								<input type="Time" name="time"><br><br>
+							<label for="guests"><h6>No. of Guests:</h6></label>
+								<select name="guests">
+									{% for i in context %}
+										<option value="{{i}}Guest">{{i}}</option>
+									{% endfor %}
+									</select><br>
+									<input type="submit" class="btn btn-primary Confirm" name="Confirm" style=" margin-left: 12em; text-align: center;" value="Confirm" />
+					{% endif %}
+						</form>
+				</div>
+			</div>
+
+			<div class="payment-gateway">
+				<h4>Payment Gateway</h4>
+				<form>
+					<table>
+						<tr><td><label><h5>1. Bhim:-</h5></label></td>
+							<td><button type="button" class="btn btn-primary" onclick="window.location.href='https://www.bhimupi.org.in';">Pay Using Bhim</button></td></tr>
+
+						<tr><td><label><h5>2. Google Pay:-</h5></label></td>
+							<td><button type="button" class="btn btn-primary" onclick="window.location.href='https://www.pay.google.com';">Pay Using Google Pay</button></td></tr>
+
+						<tr><td><label><h5>3. PhonePe:-</h5></label></td>
+							<td><button type="button" class="btn btn-primary" onclick="window.location.href='https://www.phonepe.com';">Pay Using PhonePe</button></td></tr>
+
+						<tr><td><label><h5>4. PayTm:-</h5></label></td>
+							<td><button type="button" class="btn btn-primary" onclick="window.location.href='https://www.paytm.com';">Pay Using PayTm</button></td></tr>
+					</table>
+				</form>
+			</div>
+
+			<!--Selected Menu Display-->
+			
+			<div class="selectedmenu" id="selectedmenu"  style="min-height:250px;">
+				
+				<h4>Your Selected Menu is:</h4>
+				{% for item in items %}	
+				<div class="menu-content">
+                    <div class=" container-fluid quantity">
+                        <div class="row" style="margin-bottom: 10px;">
+                            <div class="col-md-5" >
+								<div class="container">
+									<div class="row">
+										<div class="col-md-9">
+											<p>{{item.menuId.menuName}}</p>
+										</div>
+										<div class="col-md-3">
+											<p>{{item.menuId.menuPrice}}</p>
+										</div>
+
+									</div>
+								</div>
+                               											
+                            </div>
+                            <div class="col-md-7">
+								<div class="container">
+									<div class="row">
+										<div class="col-md-9">
+											<div class="quantity">
+												<button class='btn btn-decr update-cart' data-user="{{cust.custId}}" data-menu={{item.menuId.menuId}} data-action="remove" type="button"><b> - </b></button>
+													<input style="width:40px;" id="quan" type='number' value='{{item.quantity}}' disabled/>
+												<button class='btn btn-incr update-cart' data-user="{{cust.custId}}"  data-menu={{item.menuId.menuId}} data-action="add" type="button"><b> + </b></button><br>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<strong>{{item.get_total}}</strong>
+										</div>
+									</div>
+								</div>
+									
+                            </div>
+                        </div>
+                    </div>
+                </div>		
+				{% endfor %}
+			</div>
+			
+			<!--End Selection Menu-->
+
+			<!--Apply Coupon Button-->
+			<div class="couponbutton">
+				<label><h5>To Apply Coupon Click Here:</h5></label><br>
+					<button type="button" class="btn btn-primary">Apply Coupon</button>
+			</div>
+
+			<div class="billdetails">
+				<h4>Bill Details</h4>
+				<form>
+					
+					<table>
+						<tr><td><label><h5>1. Total Menu:-</h5></label></td>
+							<td><input type="text" name="items total" value="{{order.get_cart_items}}"></td></tr>
+						<tr><td><label><h5>2. Items Total:-</h5></label></td>
+							<td><input type="text" name="items total" value="{{order.total_cart}}"></td></tr>
+						<tr><td><label><h5>3. Tax Charges:-</h5></label></td>
+							<td><input type="text" name="tax charges" value="18% gst"></td></tr>
+						<tr><td><label><h5>4. To Pay:-</h5></label></td>
+							<td><input type="text" name="to pay" value={{order.get_cart_total|floatformat:2}}></td></tr>
+					</table>
+				</form>
+			</div>
+
+
+		</div>
+	</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="{% static 'js/test.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>

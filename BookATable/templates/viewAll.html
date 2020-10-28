@@ -1,46 +1,41 @@
 {% load static %}
 {% static "images" as baseUrl  %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&family=Open+Sans:ital,wght@1,600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/ViewAllStyles.css' %}">
-</head>
-<body>
-    <div class="container-fluid">
-        <div class="container-fluid " >
-            <div class="row ">
-                {% for rest in rests %}            
-                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3" >
-                        <div class="card myCart">
-                            <img src="{{rest.RestImg.url}}" class="card-img-top" alt="...">
-                            <div class="card-body cbody" >
-								<h5 class="card-title restnamestyle" name="restName" >{{rest.RestName}}</h5>
-								<p class="card-text restaddrstyle" name="restAddr" >{{rest.RestAddr}}</p>
-                                <div class="indexStar">
-                                    <i class="fas fa-star" ></i>
-                                    <i class="fas fa-star" ></i>
-                                    <i class="fas fa-star" ></i>
-                                    <i class="fas fa-star-half"></i>                   
-                                </div>
-                                    <br>
-                                <a href="myRest/{{rest.RestId}}"><button id="{{rest.RestId}}" class="btn  cart myBtn">Book A Table</button></a>
-                            </div>
-                        </div>
-                    </div>                
-                {% endfor %}
-            </div>
-        </div> 
-        <div class="divViewAll">
-            <button  class="btn  cart viewall">View All</button>
-        </div>  
-    </div>
-</body>
-</html>
+  <title></title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+ </head>
+
+ <body>
+ 	<div class="container mt-5" >
+        {% for rest in rests %}
+ 		<!--Horizontal card-->
+ 		<div class="card" style="height: 180px; margin-bottom: 10px;">
+ 			<div class="row">
+ 				<div class="col-md-4">
+ 					<img src="{{rest.restImg.url}}" class="img-fluid" style="padding: 26px 35px 17px 35px">
+ 				</div>
+ 				<div class="col-md-8">
+ 					<h3 class="card-title mt-2">{{rest.restName}} {{rest.restType}}</h3>
+ 					<h6>{{rest.restAddress}}</h6>
+ 					<p> Cost of three 1000/- approx. &nbsp; &nbsp; &nbsp;Cuisine: North Indian, South Indian</p>
+ 					<a href="{% url 'RestInfo' rest.restId cust.custId   %}"><button class="btn btn-info">Book A Table</button></a>
+ 				</div>
+ 			</div>
+         </div>
+         {% endfor %}
+ 	</div>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+ </body>
+ </html>

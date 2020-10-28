@@ -1,0 +1,79 @@
+.order{
+	margin-top: 15px;
+}
+
+.order h4{
+	margin-left: 20px;
+	font-family: 'Sansita Swashed', cursive;
+	font-size: 20px;
+}
+.orderdetails{
+	margin-top: -25px;
+}
+
+.orderdetails h4{
+	margin-left: 20px;
+	font-family: 'Sansita Swashed', cursive;
+	font-size: 20px;
+}
+
+.orderdetails h5{
+	margin-left: 20px;
+	font-family: 'Lato', sans-serif;
+	font-size: 25px;
+}
+
+.selecteditems{
+	margin-top: 1px;
+}
+
+.selecteditems h4{
+	margin-left: 20px;
+	font-family: 'Sansita Swashed', cursive;
+	font-size: 20px;
+}
+
+.selecteditems col-md-12 h6{
+	margin-left: 20px;
+	font-family: 'Lato', sans-serif;
+	font-size: 20px;
+}
+
+.selecteditems col-md-6 h4{
+	margin-left: 20px;
+	font-family: 'Lato', sans-serif;
+	font-size: 15px;
+}
+
+.feedBack{
+	margin-top: 30px;
+	margin-left: 20px;
+}
+
+.feedBack h3{
+	margin-left: 20px;
+	font-family: 'Sansita Swashed', cursive;
+	font-size: 30px;
+}
+
+.feedBack h5{
+	margin-left: 18px;
+	font-family: 'Lato', sans-serif;
+	font-size: 25px;
+}
+
+.feedBack form{
+	margin-left: 20px;
+	font-family: 'Lato', sans-serif;
+	font-size: 16px;
+}
+
+.feedBackdetails{
+	margin-top: 10px;
+}
+
+.feedBackdetails label{
+	margin-left: 20px;
+	font-family: 'Sansita Swashed', cursive;
+	font-size: 19px;
+}
