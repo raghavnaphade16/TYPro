@@ -1,0 +1,100 @@
+{% load static %}
+{% static "images" as baseUrl  %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Payment</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/payment.css' %}">
+
+
+</head>
+<body>
+	<div class="container">
+		<div class="paymentgrid">
+			<div class="orderdetails">
+				<h4>Order Details</h4>
+				<form>
+					<table>
+					<tr><td><label><h5>Hotel Name:-</h5></label></td>
+						<td><input type="text" name="hotel name"></td></tr><br>
+					<tr><td><label><h5>Customer Name:-</h5></label></td>
+						<td><input type="text" name="cust name"></td></tr><br>
+					<tr><td><label><h5>Date & Time:-</h5></label></td>
+						<td><input type="text" name="datetime"></td></tr>
+					</table>
+				</form>
+			</div>
+
+			<div class="payment-gateway">
+				<h4>Payment Gateway</h4>
+				<form>
+					<table>
+						<tr><td><label><h5>1. Bhim:-</h5></label></td>
+							<td><button type="button" class="btn btn-primary" onclick="window.location.href='https://www.bhimupi.org.in';">Pay Using Bhim</button></td></tr>
+
+						<tr><td><label><h5>2. Google Pay:-</h5></label></td>
+							<td><button type="button" class="btn btn-primary" onclick="window.location.href='https://www.pay.google.com';">Pay Using Google Pay</button></td></tr>
+
+						<tr><td><label><h5>3. PhonePe:-</h5></label></td>
+							<td><button type="button" class="btn btn-primary" onclick="window.location.href='https://www.phonepe.com';">Pay Using PhonePe</button></td></tr>
+
+						<tr><td><label><h5>4. PayTm:-</h5></label></td>
+							<td><button type="button" class="btn btn-primary" onclick="window.location.href='https://www.paytm.com';">Pay Using PayTm</button></td></tr>
+					</table>
+				</form>
+			</div>
+
+			<!--Selected Menu Display-->
+
+			<!--End Selection Menu-->
+
+			<!--Apply Coupon Button-->
+			<div class="couponbutton">
+				<label><h5>To Apply Coupon Click Here:</h5></label><br>
+					<button type="button" class="btn btn-primary">Apply Coupon</button>
+			</div>
+
+			<div class="billdetails">
+				<h4>Bill Details</h4>
+				<form>
+					<table>
+						<tr><td><label><h5>1. Items Total:-</h5></label></td>
+							<td><input type="text" name="items total"></td></tr><br>
+						<tr><td><label><h5>2. Tax Charges:-</h5></label></td>
+							<td><input type="text" name="tax charges"></td></tr><br>
+						<tr><td><label><h5>3. To Pay:-</h5></label></td>
+							<td><input type="text" name="to pay"></td></tr>
+					</table>
+				</form>
+			</div>
+
+
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>

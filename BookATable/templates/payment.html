@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'styles/payment.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
-
+	<link rel="stylesheet" type="text/css" href="{% static 'styles/payment.css' %}">
 	<script type="text/javascript" src="{% static 'js/test.js' %}"></script>
 	<script type="text/javascript">
         function getToken(name) {
@@ -46,8 +46,7 @@
 						<td><input type="text" name="hotel name" value="{{rest.restName}}"></td></tr><br>
 					<tr><td><label><h5>Customer Name:-</h5></label></td>
 						<td><input type="text" name="cust name" value="{{cust.custFirstName}}"></td></tr><br>
-					<tr><td><label><h5>Date & Time:-</h5></label></td>
-						<td><input type="text" name="datetime"></td></tr>
+					
 					</table>
 				</form>
 			</div>
@@ -60,11 +59,11 @@
 						<form action="{% url 'FinalTransaction' order.orderId %}" role="form" method="POST">
 							{% csrf_token %} 
 							<label><h6>Date:</h6></label>
-								<input type="Date" name="date">
+								<input type="Date" name="date" required="">
 							<label><h6>Time:</h6></label>
-								<input type="Time" name="time"><br><br>
+								<input type="Time" name="time" required=""><br><br>
 							<label for="guests"><h6>No. of Guests:</h6></label>
-								<select name="guests">
+								<select name="guests" required="">
 									{% for i in context %}
 										<option value="{{i}}Guest">{{i}}</option>
 									{% endfor %}

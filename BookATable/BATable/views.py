@@ -113,64 +113,47 @@ def RestInfo(request,myid=None,cid=None):
         rests= Restaurant.objects.filter(restId=myid)
         return render(request,"restInfo.html",{'rest':rests[0],'menus':menus,'context':data})
 def Payment(request,cid=None,rid=None):
-    if cid==None:
-        messages.info(request, 'Please Login First')
-        return render(request,'index.html')
             
-    elif Customer.objects.filter(custId=cid).exists():
-        if Orders.objects.filter(custId=cid).exists():
+    if Customer.objects.filter(custId=cid).exists() and Orders.objects.filter(custId=cid).exists() and Orders.objects.filter(custId=cid,status=False):
             print("Existing Cart and OID")
-            obj=Orders.objects.filter(custId=cid)
+            
             cust=Customer.objects.all().filter(custId=cid)
+
+            obj = str(Orders.objects.latest('orderId'))  
+            oid=obj[15:19]
+            if Orders.objects.filter(orderId=oid).exists() and Orders.objects.filter(orderId=oid,status=True):
+                obj = str(Orders.objects.latest('orderId'))
+                temp=int(obj[15:19])
+                temp1=int(temp+1)
+                oid=str(temp1)
+                print("Created in if Payment")
+            elif Orders.objects.filter(orderId=oid).exists() and Orders.objects.filter(orderId=oid,status=False):
+                obj = str(Orders.objects.latest('orderId'))  
+                print(obj)
+                oid=obj[15:19]
+                print("Execute Else in Payment ")
+          
+            order,created=Orders.objects.get_or_create(orderId=oid,custId=cid,status=False)
             
-            oid=str(obj[0].orderId)
-            print(oid)
+            #order = Orders.objects.get(orderId=oid,custId=cid,status=False)
+            #if Orders.objects.filter(restId__isnull=True) :
+             #   return render(request,'payment.html')
+            #else:
+            orid=order.restId
             
-        #order,created=Orders.objects.get_or_create(orderId=oid,custId=cid,status=False)
-            
-            order = Orders.objects.get(orderId=oid,custId=cid,status=False)
-            if Orders.objects.filter(restId__isnull=True) :
-                return render(request,'payment.html')
-            else:
-                orid=order.restId
-                print("Hello",orid)            
             #return render(request,'payment.html',{'cust':cust[0]})
-                items=order.ordermenu_set.all()
+            items=order.ordermenu_set.all()
             #restname = str(items[0].menuId.restId.restName)
-                r=items[0].menuId.restId.restId
-                print(items[0].menuId.restId.restId)
-                print(r)
-                Orders.objects.filter(orderId=oid).update(restId=r)
-                rests= Restaurant.objects.filter(restId=items[0].menuId.restId.restId)
+            r=items[0].menuId.restId.restId 
+            #print(items[0].menuId.restId.restId)
+            #print(r)
+            Orders.objects.filter(orderId=oid).update(restId=r)
+            rests= Restaurant.objects.filter(restId=items[0].menuId.restId.restId)
             #print(rests[0]) ,
 
-                data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+            data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         #return render(request,'payment.html',{'cust':cust[0]})
-                return render(request,'payment.html',{'rest':rests[0],'items':items,'order':order,'cust':cust[0],'context':data})
-        else:
-                print("New OID")
-                try:
-                    obj = str(Orders.objects.latest('orderId'))  
-                    print(obj)
-                    temp=int(obj[15:19])
-                    temp1=int(temp+1)
-                    print(temp1)
-                    oid=str(temp1)
-                except Orders.DoesNotExist:
-                    oid="5001"
-                
-                custid=Customer.objects.get(custId=cid)
-                d=None
-                tn=0
-                rid=None
-                order=Orders(orderId=oid,restId=rid,custId=custid,status=False,bookingDtTime=d,tableNo=tn)   
-                order.save() 
-                cust=Customer.objects.all().filter(custId=cid)
-                items=order.ordermenu_set.all()
-                #rests= Restaurant.objects.filter(restId=items[0].menuId.restId.restId)
-        #return render(request,'payment.html',{'cust':cust[0]})'rest':rests[0],
-                data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-                return render(request,'payment.html',{'items':items,'order':order,'cust':cust[0],'context':data})
+            return render(request,'payment.html',{'rest':rests[0],'items':items,'order':order,'cust':cust[0],'context':data})
     else:
         print("Create Card")
         items=[]
@@ -179,7 +162,9 @@ def Payment(request,cid=None,rid=None):
         cartitems=order['get_cart_items']
         data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         context={'items':items,'order':order,'cartitems':cartitems,'context':data}
-        return render(request,'payment.html',context)
+
+        return render(request,'Payment.html',context)
+
     
 def updateItem(request):
     data=json.loads(request.body)
@@ -187,15 +172,37 @@ def updateItem(request):
     menuID=str(data['menuID'])
     user=str(data['user'])
     action=str(data['action'])
-    print('Action',action)
-    print('Menu ID',menuID)
-    print('User',user)
+    #print('Action',action)
+    #print('Menu ID',menuID)
+    #print('User',user)
     cid=Customer.objects.get(custId=user)
     menu=Menu.objects.get(menuId=menuID)
-    print(menu.restId)
-    mrid=str(menu.restId)
-    print(menu)
-    order,created=Orders.objects.get_or_create(custId=user,status=False)
+    #print(menu.restId)
+    #mrid=str(menu.restId)
+    #print(menu)
+    d=None
+    tn=0
+    rid=None
+    try:
+        
+        obj= str(Orders.objects.latest('orderId'))  
+        #print(obj)
+        oid=obj[15:19]
+        if Orders.objects.filter(orderId=oid).exists() and Orders.objects.filter(orderId=oid,status=True):
+            obj = str(Orders.objects.latest('orderId'))
+            temp=int(obj[15:19])
+            temp1=int(temp+1)
+            
+            oid=str(temp1)
+            print("Print IF Block in orderUpdate")
+        elif Orders.objects.filter(orderId=oid).exists() and  Orders.objects.filter(orderId=oid,status=True):
+            obj = str(Orders.objects.latest('orderId'))  
+            #print(obj)
+            oid=obj[15:19]    
+            print("Print ELSE Block in orderUpdate")
+    except:
+        oid='5001'
+    order,created=Orders.objects.get_or_create(orderId=oid,custId=cid,restId=menu.restId,status=False,bookingDtTime=d,tableNo=tn)
     print(order.orderId)
     if Orders.objects.filter(restId__isnull=True) :
         menu=Menu.objects.get(menuId=menuID)
@@ -251,10 +258,7 @@ def FinalTransaction(request,oid):
         #return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
                 return render(request,'finaltrn.html',{'rid':rid,'oid':oid,'items':items,'date':bdate,'time':btime,'nog':guest,'order':order})
 
-def logout(request):
-    rests=restHome()
-    messages.error(request, 'Oops, something bad happened')
-    return render(request,'home.html',{'rests':rests},messages)
+
 
 def viewall(request,cid=None):
     if cid==None:
@@ -274,4 +278,9 @@ def feedback(request,rid):
         message=request.POST['message']
         
         print(rid)
-        return render(request,'home.html')
+        return redirect('/')
+
+
+def logout(request):
+    
+    return redirect('/')
