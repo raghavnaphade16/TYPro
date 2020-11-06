@@ -57,6 +57,7 @@ class Orders(models.Model):
   status=models.BooleanField(default=False,null=True,blank=True)
   bookingDtTime=models.DateTimeField(null=False, blank=False) 
   tableNo=models.IntegerField()
+  #nog=models.IntegerField(blank=True,default=0)
   class Meta:
     db_table = "Orders"
   
@@ -87,7 +88,13 @@ class Orders(models.Model):
     ordermenus=self.ordermenu_set.all()
     total=sum([item.quantity for item in ordermenus])
     return total
-
+  
+  def datebooked(self):
+      return self.bookingDtTime.strftime('%d %B %Y')
+  
+  def timeBooked(self):
+    return self.bookingDtTime.strftime('h i A')
+  
 class Transaction(models.Model):
   trnId=models.CharField(primary_key=True,max_length=50)
   orderId=models.ForeignKey(Orders,on_delete=models.CASCADE)
@@ -98,8 +105,21 @@ class Transaction(models.Model):
   netTotal=models.IntegerField()
   class Meta:
     db_table="Transaction"
+
   
-class FeedBack(models.Model):
+  def totalsales():
+    total=0
+    obj=Transaction.objects.all()
+    total=sum([item.netTotal for item in obj])
+    
+    return total
+  def nettotalsales():
+    total=0
+    obj=Transaction.objects.all()
+    total=sum([item.total for item in obj])
+    
+    return total
+'''class FeedBack(models.Model):
   feedbackId=models.CharField(primary_key=True,max_length=50)
   restId= models.ForeignKey(Restaurant,on_delete=models.CASCADE)
   feedbackType=models.CharField(max_length=50)
@@ -110,7 +130,7 @@ class FeedBack(models.Model):
   contactno=models.BigIntegerField() 
   class Meta:
     db_table="FeedBack"
-  
+  '''
 class ordermenu(models.Model):
     custId=models.ForeignKey(Customer,on_delete=models.CASCADE)
     menuId= models.ForeignKey(Menu,on_delete=models.CASCADE)

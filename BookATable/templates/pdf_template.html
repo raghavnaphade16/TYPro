@@ -1,0 +1,174 @@
+{% load static %}
+{% static "images" as baseUrl  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&family=Open+Sans:ital,wght@1,600&display=swap&family=Courgette&display=swa&family=Courgette&display=swap&family=Secular+One&family=Source+Sans+Pro:ital,wght@1,700&display=swap&family=Dosis:wght@800&display=swap&family=Courgette&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    
+   
+    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
+    <style>
+        .header {
+            font-size: 20px;
+            font-weight: 100;
+            text-align: center;
+            color: #007cae;
+        }
+        .title {
+            font-size: 22px;
+            font-weight: 100;
+           /* text-align: right;*/
+           padding: 10px 20px 0px 20px;  
+        }
+        .title span {
+            color: #007cae;
+        }
+        .hrItem {
+            border: none;
+            height: 1px;
+            /* Set the hr color */
+            color: #333; /* old IE */
+            background-color: #fff; /* Modern Browsers */
+        }
+        .order h4{
+            font-family: 'Sansita Swashed', cursive;
+            font-size: 18px;
+        }
+        .orderdetails h4{
+           
+            font-family: 'Sansita Swashed', cursive;
+            font-size: 18px;
+        }
+        .orderdetails h5{
+         
+            font-family: 'Lato', sans-serif;
+            font-size: 18px;
+        }
+        .selecteditems h4{
+           
+            font-family: 'Sansita Swashed', cursive;
+            font-size: 18px;
+        }
+        .selecteditems col-md-12 h6{
+            
+            font-family: 'Lato', sans-serif;
+            font-size: 18px;
+        }
+        
+        .selecteditems col-md-6 h4{
+            
+            font-family: 'Lato', sans-serif;
+            font-size: 18px;
+        }
+        
+        
+        
+    </style>
+</head>
+<body>
+    <div class='wrapper'>
+        <div class='header'>
+            <p class='title'>Invoice # </p>
+        </div>
+    </div>
+    <div class="container">
+		<div class="row">
+				
+					<div class="col-lg-6" >
+						<!--*******Ithe Orders Details Yetil*******-->
+						<div class="container">
+							<div class="order">
+								
+                                <h4>Order #OR462{{oid}}</h4>
+                            </div>
+                            <div style="margin-bottom: 10px;">
+								
+								<p style="font-size: 15px;">{{now | date:"SHORT_DATE_FORMAT"}} {{now |time:"h:i A"}}</p>
+								
+							</div>
+
+
+                            
+							<div class="orderdetails">
+								<table>
+									<tr><td><h4>Hotel Name:</h4></td>
+										<td><h4>{{order.restId.restName}}{{order.restId.restType}}</h4></td></tr>
+									<tr><td><h4>Customer Name:-</h4></td>
+										<td><h4>{{order.custId.custFirstName}}</h4></td></tr><br>
+									<tr><td><h4>Booking Date & Time:-</h4></td>
+										<td><h4>{{order.datebooked}} {{ order.bookingDtTime |time:"h:i A"  }}</h4></td></tr><br>
+									<!--<tr><td><h4>No of Guests:-</h4></td>
+										<td><h4>{{nog}}</h4></td></tr><br> -->  
+											 
+							   </table>
+							</div>
+							<hr class='hrItem' />
+							
+							
+							<div class="selecteditems">
+								<h4><u>Selected Items:-</u></h4>
+								<div class="container">
+								{% for item in items %}
+									<div class="row">
+                                        <table>
+                                            <tr>
+                                                <td><h4>{{item.menuId.menuName}} * {{item.quantity}}</h4></td>
+                                                <td><h4>{{item.get_total}}</h4></td>
+                                            </tr>
+                                                                                                 
+                                       </table>
+                                    </div>
+								{% endfor %}
+                                <hr class='hrItem' />
+
+									<div class="row">
+                                        <table>
+                                            <tr>
+                                                <td><h4>Item Total</h4></td>
+                                                <td><h4>{{order.total_cart}}/-</h4></td>
+                                            </tr>
+                                        </table>
+
+									</div><br>
+
+									<div class="row">
+                                        <table>
+                                            <tr>
+                                                <td><h4>GST</h4></td>
+                                                <td><h4>{{order.gst|floatformat:2}}(18%)</h4></td>
+                                            </tr>
+                                        </table>
+									</div>
+
+									
+									<hr class='hrItem' />
+
+									<div class="row">
+                                        <table>
+                                            <tr>
+                                                <td><h4>Bill Total</h4></td>
+                                                <td><h4>{{order.get_cart_total}}</h4></td>
+                                            </tr>
+                                        </table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+                        
+						
+         </div>
+     </div>        
+
+</body>  
+</html>

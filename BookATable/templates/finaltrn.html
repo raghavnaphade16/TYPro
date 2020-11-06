@@ -28,20 +28,25 @@
 						<div class="container">
 							<div class="order">
 								<h4>Booking Successful Thank You!!</h4>
-								<h4>Order #OR462{{oid}}
-								</h4>
+								<h4>Order #OR462{{oid}}</h4>
+								
+							</div>
+							<div >
+								
+								<p>{{now | date:"SHORT_DATE_FORMAT"}} {{now |time:"h:i A"}}</p>
 								
 							</div>
 							<div class="orderdetails">
 								<table>
 									<tr><td><h4>Hotel Name:</h4></td>
-										<td><h4>{{item.menuId.restId.restName}}{{item.menuId.restId.restType}}</h4></td></tr>
+										<td><h4>{{order.restId.restName}}{{order.restId.restName.restType}}</h4></td></tr>
 									<tr><td><h4>Customer Name:-</h4></td>
-										<td><h4>{{item.custId.custFirstName}}</h4></td></tr><br>
+										<td><h4>{{order.custId.custFirstName}}</h4></td></tr><br>
 									<tr><td><h4>Date & Time:-</h4></td>
-										<td><h4>{{date}} {{time}}</h4></td></tr><br>
-									<tr><td><h4>No of Guests:-</h4></td>
-										<td><h4>{{nog}}</h4></td></tr><br>   
+										<td><h4>{{order.datebooked}} {{ order.bookingDtTime |time:"h:i A"  }}
+										</h4></td></tr><br>
+									<!--<tr><td><h4>No of Guests:-</h4></td>
+										<td><h4>{{order.nog}}</h4></td></tr><br> -->  
 											 
 							   </table>
 							</div>
@@ -116,6 +121,16 @@
 										</div>
 										<div class="col-lg-6">
 											<h5>{{order.get_cart_total}}</h5>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<a class="btn btn-info" href="{% url 'pdf_view' oid %}" target="_blank">View Invoice</a>
+											
+										</div>
+										<div class="col-md-6">
+											
+											<a class="btn btn-info"  href="{% url 'pdf_download' oid %}">Download Invoice</a>
 										</div>
 									</div>
 								</div>

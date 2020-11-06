@@ -12,7 +12,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 from django.contrib.messages import constants as message_constants
 
 import os
-
+#new
+#import django_heroku 
+#import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -90,6 +92,10 @@ DATABASES = {
         'HOST':'localhost',
     }
 }
+#new
+#DATABASES={
+ #   'default':dj_database_url.config()
+#}
 
 
 # Password validation
@@ -137,3 +143,7 @@ STATIC_ROOT=os.path.join(BASE_DIR,'assets')
 
 MEDIA_URL='/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+#new
+#STATIC_ROOT=os.path.join(BASE_DIR,'static')
+#django_heroku.settings(locals())
