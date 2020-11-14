@@ -22,12 +22,43 @@
     <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
-   
+    <!--<link rel="stylesheet" type="text/css" href="{% static 'styles/popup.css' %}">-->
+
     <script type="text/javascript">
         var user='{{curcid}}'
     </script>
+
+    
     </head>
 <body>
+    <script type="text/javascript">
+        function myFunction()
+        {
+            alert("Under Process!");
+        
+        }
+    </script>
+
+    <script>
+        function ValidateEmail(inputText)
+        {
+            var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            if(inputText.value.match(mailformat))
+            {
+                
+                document.register.email.focus();
+                return true;
+            }
+            else
+            {
+                alert("You have entered an invalid email address!");
+                document.register.email.focus();
+                return false;
+            }
+        }
+
+       
+    </script>
     <!--Nav Bar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Book a Table</a>
@@ -88,7 +119,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="login" method="post">
+                        <form action="login" name="login" method="post">
                             {% csrf_token %}   
                             <div class="form-group">
                                 <label for="firstname">User Name</label>
@@ -97,11 +128,11 @@
 
                             <div class="form-group">
                                 <label for="password"> Password</label>
-                                <input type="text" class="form-control" id="password" name="exampleInputPassword1" placeholder=" Enter Your Password" required="">
+                                <input type="password" class="form-control" id="password" name="exampleInputPassword1" placeholder=" Enter Your Password" required="">
                             </div>
                             <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary" >Login</button>
+                                    <button type="submit" class="btn btn-primary">Login</button>
                                 
                             </div>
                         </form>
@@ -120,42 +151,42 @@
                             </button>
                     </div>
                     <div class="modal-body">
-                        <form action="registration" method="post">
+                        <form action="registration" name="register" method="post">
                             {% csrf_token %}
                             <div class="form-group">
                                 <label for="fname">first name</label>
-                                <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter firstname ">
+                                <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter firstname" required="">
                             </div>
                             <div class="form-group">
                                 <label for="lname">Last Name</label>
-                                <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter Last Name">
+                                <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter Last Name" required="" >
                             </div>
 
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="text" class="form-control" id="email" name="email" placeholder="name@gmail.com">
+                                <input type="text" class="form-control" id="email" name="email" placeholder="name@gmail.com" required="">
                             </div>
                             <div class="form-group">
                                 <label for="phno">PhoneNo</label>
-                                <input type="Number" class="form-control" id="Phno" name="Phno" placeholder="Enter Phone Number">
+                                <input type="text" class="form-control" id="Phno" name="Phno" placeholder="Enter Phone Number" required="">
                             </div>
                             <div class="form-group">
                                 <label for="City">City</label>
-                                <input type="text" class="form-control" id="City" name="City" placeholder="Enter City">
+                                <input type="text" class="form-control" id="City" name="City" placeholder="Enter City" required="">
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="text" class="form-control" id="password" name="password" placeholder="Enter Password">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required="">
                             </div>
 
                             <div class="form-group">
                                 <label for="confirmpassword">Confirm Password</label>
-                                <input type="text" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Enter Your Password Again">
+                                <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Enter Your Password Again" required="">
                             </div>
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <input type="submit" class="btn btn-secondary" name="Submit" value="Signup">
+                                <input type="submit" class="btn btn-secondary" name="Submit" value="Signup" onclick="ValidateEmail(document.register.email)">
                             </div>
                     </div>
                 </div>
@@ -196,16 +227,17 @@
         </div>
         <div class="row ">
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3" >
-                <button type="button" class="btn  btn-lg btn-block FilterBtn" ><img class="filterLogo" src="{% static 'images/resizerestaurantIcon.png' %}" class="removeImage" />Near Me</button>
+                <button type="button" class="btn  btn-lg btn-block FilterBtn" ><img class="filterLogo" src="{% static 'images/resizerestaurantIcon.png' %}" class="removeImage" onclick="myFunction();" />Near Me</button>
+                
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3" >
-                <button type="button" class="btn  btn-lg btn-block FilterBtn" style="background-color: white;"><img class="filterLogo" src="{% static 'images/resizeveg.png' %}" class="removeImage" />Veg</button>
+                <button type="button" class="btn  btn-lg btn-block FilterBtn" style="background-color: white;"><img class="filterLogo" src="{% static 'images/resizeveg.png' %}" class="removeImage" onclick="myFunction();" />Veg</button>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3" >
-                <button type="button" class="btn  btn-lg btn-block FilterBtn" style="background-color: white;"><img class="filterLogo" src="{% static 'images/resizeNV.png' %}" class="removeImage" />Non Veg </button>
+                <button type="button" class="btn  btn-lg btn-block FilterBtn" style="background-color: white;"><img class="filterLogo" src="{% static 'images/resizeNV.png' %}" class="removeImage" onclick="myFunction();" />Non Veg </button>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3" >
-                <button type="button" class="btn  btn-lg btn-block FilterBtn" style="background-color: white;"><img class="filterLogo" src="{% static 'images/resizerestaurantIcon.png' %}" class="removeImage" />Both</button>
+                <button type="button" class="btn  btn-lg btn-block FilterBtn" style="background-color: white;"><img class="filterLogo" src="{% static 'images/resizerestaurantIcon.png' %}" class="removeImage" onclick="myFunction();" />Both</button>
             </div>
         </div>   
     </div>
@@ -239,7 +271,7 @@
         </div>   
     </div>
     <div class="divViewAll">
-        <a href="viewall"><button id="viewall"  class="btn  cart viewall">View All</button></a>    </div>
+        <a href="viewall"> <input type="button" id="viewall"  class="btn  cart viewall" value=" View All"></button></a>    </div>
 <!--Quote Slider Start-->
     <div class="container-fluid QuoteSlider">  
  
@@ -450,7 +482,6 @@
     <footer class="footer-distributed">
 
         <div class="footer-left">
-            <img src="img/logo.png">
             <h3>About:<span>Book a Table</span></h3>
 
             <p class="footer-links">
@@ -465,17 +496,20 @@
 
         <div class="footer-center">
             <div>
-                <i class="fas fa-map-marker"></i>
-                <p><span>309 - Satyam,
-                     Bldg. No. A - 1, Sector - 1</span> Shivaji Nagar, Pune - 411003</p>
-            </div>
+                <i style="color: white;" class="fas fa-map-marker"></i>
+                <p>
+                    <span >
+                        <p>309 - Satyam,Bldg. No. A - 1, Sector - 1 <br> Shivaji Nagar, Pune - 411003</p>
+                    </span> 
+                        </p>
+            </div><br>
 
             <div>
-                <i class="fa fa-phone"></i>
+                <i style="color: white;" class="fa fa-phone"></i>
                 <p>+91 9011334003</p>
-            </div>
+            </div><br>
             <div>
-                <i class="fa fa-envelope"></i>
+                <i style="color: white;" class="fa fa-envelope"></i>
                 <p><a href="support@bookatable.com">support@bookatable.com</a></p>
             </div>
         </div>

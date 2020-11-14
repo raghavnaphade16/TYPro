@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Feedback</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'styles/feedback.css' %}" type="text/css">
+
+    
+    </head>
+    <body>
+        <div class="feedback">
+            <div class="box">
+                <div class="img-area">
+                </div>
+                <div class="form">
+                    <form action="{% url 'feedback'  rid %}" role="form" method="POST">
+                        {% csrf_token %} 
+                        <div class="container">
+                            <div class="feedBack">
+                                <div class="row">
+                                    <h3 class="text-center mt-5">FeedBack Form</h3>
+
+                                    <hr class="bg-white">
+                                    <h5 class="mt-4">How Do You Rate Your Overall Experience?</h5><br><br>
+
+                                    <div>
+                                        <input type="radio" name="rate" value="vbad">Very Bad &nbsp; &nbsp;
+                                        <input type="radio" name="rate" value="bad">Bad &nbsp; &nbsp;
+                                        <input type="radio" name="rate" value="good">Good &nbsp; &nbsp;
+                                        <input type="radio" name="rate" value="vgood">Very Good &nbsp; &nbsp;
+                                        <input type="radio" name="rate" value="exc">Excellent
+                                    </div>
+                                </div>
+                            </div>
+
+                                <div class="feedBackdetails">
+                                    <div class="col-md-2"></div>
+                                    
+                                        <label>Email Id*<br>
+                                            <input type="text" id="email" name="email" required=""><br>
+                                        </label>
+
+                                        <label>FeedBack Type*<br>
+                                            <select name = "ftype" >
+                                                <option value="1">Restaurant</option>
+                                                <option value="2">Online System</option>
+                                                <option value="3">Other</option>
+                                            </select>
+                                        </label>
+
+                                        
+
+                                        <label>Phone Number*<br>
+                                            <input type="text" id="cno" name="cno" required="">
+                                        </label>
+
+                                        <label>FeedBack Description*<br>
+                                            <textarea id="message" name="message" required="" placeholder="Write Your Message Here" cols="50" rows="5"></textarea>
+                                        </label>
+                                    
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-2"></div>
+                                    <button class="btn btn-primary" style="width: 40%; position: absolute; margin-left: 15%">Submit</button>
+                                </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

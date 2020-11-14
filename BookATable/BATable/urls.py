@@ -10,6 +10,7 @@ urlpatterns = [
     path('Payment/<str:cid>',views.Payment,name='Payment'),
     path('update_item/',views.updateItem,name="update_item"),
     path('viewall/<str:cid>',views.viewall,name="viewall"),
+    path('viewall/',views.viewall,name="viewall"),
     path('FinalTransaction/<str:oid>',views.FinalTransaction,name="FinalTransaction"),
     path('feedback/<str:rid>',views.feedback,name='feedback'),
     path('pdf_view/<str:oid>', views.ViewPDF.as_view(), name="pdf_view"),

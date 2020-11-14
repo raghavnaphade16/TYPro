@@ -16,20 +16,150 @@
     
     <link rel="stylesheet" type="text/css" href="{% static 'styles/finaltrn.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="css/jquery_popup.css" />
+
+
 </head>
 <body>
-    
-   <div class="container">
+	<!--Nav Bar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Book a Table</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about.html">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Topics
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Technology</a>
+                        <a class="dropdown-item" href="#">Web Development</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Support</a>
+                        <a class="dropdown-item" href="#">Write for us</a>                       
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Contact.html">Contact us</a>
+                        
+                        </li>                 
+            
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            
+            <div class="mx-2">
+
+               <!--<button class="btn btn-success" data-toggle="modal" data-target="#SignUpModal">Sign Up</button>-->
+                <button class="btn btn-outline-success mx-1"  >Hello {{cust.custFirstName}}</button>
+                    <button class="btn btn-outline-success mx-1" >Cart</button></a>
+                <a href="{{logout}}"><button class="btn btn-outline-success mx-1" >Logout</button></a>
+            </div>
+        </div>
+	</nav>
+	<!--end nav-->
+
+	<!--Quote Slider Start-->
+    <div class="container-fluid QuoteSlider">  
+ 
+        <div class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselSliderQuote" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselSliderQuote" data-slide-to="1"></li>
+            <li data-target="#carouselSliderQuote" data-slide-to="2"></li>
+        </ol>
+        
+        <div class="carousel-inner ciquote">
+          
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <img src="{% static 'images/chef2.jpg' %}"  style="height: 200px;width: 150px; padding-top: 30px;" class="removeImage" />
+                        </div>
+                        <div class="col-lg-9">
+                            <blockquote class="text-center mainquote">  
+                                <p class="Quote"><i class="fas fa-quote-left DoubleQuoteStart" aria-hidden="true" ></i>After a good dinner one can forgive anybody, even one's own relations.<i class="fas fa-quote-right DoubleQuoteEnd" aria-hidden="true"></i></p>
+                                <p class="Quote">- Oscar Wilde, A Woman of No Importance</p>
+                            </blockquote>
+                        </div>
+                    </div>    
+                </div>   
+            </div>
+            <div class="carousel-item ">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <blockquote class="text-center mainquote">
+                                <p class="Quote"><i class="fas fa-quote-left DoubleQuoteStart" aria-hidden="true" ></i>There are people in the world so hungry, that God cannot appear to them except in the form of bread.<i class="fas fa-quote-right DoubleQuoteEnd" aria-hidden="true"></i></p>
+                                <p class="Quote">- Mahatma Gandhi</p>
+                            </blockquote>
+                        </div>
+                        
+                        <div class="col-lg-3">
+                            <img src="{% static 'images/food2.jpg' %}"  style="height: 200px;width: 150px; padding-top: 20px;" class="removeImage" />
+                        </div>
+                        
+                    </div>    
+                </div>
+            </div>
+            <div class="carousel-item ">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <img src="{% static 'images/chef3.jpg' %}"  style="height: 250px;width: 175px; padding-top: 20px;" class="removeImage" />
+                        </div>
+                        <div class="col-lg-9">
+                            <blockquote class="text-center mainquote">
+                                <p class="Quote"><i class="fas fa-quote-left DoubleQuoteStart" aria-hidden="true" ></i>Food is for eating, and good food is to be enjoyed...I think food is, actually, very beautiful in itself.<i class="fas fa-quote-right DoubleQuoteEnd" aria-hidden="true"></i></p>
+                                <p class="Quote">- Delia Smith</p>
+                            </blockquote>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+        </div>
+        <div>
+            <a class="carousel-control-prev" href="#carouselSliderQuote" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselSliderQuote" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true" ></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        </div>
+    </div>
+       <!--Quote Slider End-->
+	
+    <div class="container-fluid p-3 my-3 " style="text-align: center;">
+		<h2><u>Receipt For Your Table</u></h2>
+	</div>
+
+    <div class="main-container" style="height: auto;">
 		<div class="row">
 				
 					<div class="col-lg-6" >
 						<!--*******Ithe Orders Details Yetil*******-->
-						<div class="container">
+						<div class="sub-container">
 							<div class="order">
-								<h4>Booking Successful Thank You!!</h4>
+								<center><img src="{% static 'images/reserved.jpg' %}" style="height: 65px; width:85px; margin-left:30px; margin-right:auto; vertical-align:middle"><h3 style="display: inline-block;  font-size:xx-large">Book A Table</h3><hr>
+								<h3>Booking Successful Thank You!!</h3>
 								<h4>Order #OR462{{oid}}</h4>
-								
+						
 							</div>
 							<div >
 								
@@ -38,6 +168,10 @@
 							</div>
 							<div class="orderdetails">
 								<table>
+									<tr>
+                                        <th><b>Description</b></th>
+                                        <th><b>Amount</b></th>
+                                    </tr>
 									<tr><td><h4>Hotel Name:</h4></td>
 										<td><h4>{{order.restId.restName}}{{order.restId.restName.restType}}</h4></td></tr>
 									<tr><td><h4>Customer Name:-</h4></td>
@@ -45,16 +179,16 @@
 									<tr><td><h4>Date & Time:-</h4></td>
 										<td><h4>{{order.datebooked}} {{ order.bookingDtTime |time:"h:i A"  }}
 										</h4></td></tr><br>
-									<!--<tr><td><h4>No of Guests:-</h4></td>
-										<td><h4>{{order.nog}}</h4></td></tr><br> -->  
+									<tr><td><h4>No of Guests:-</h4></td>
+										<td><h4>{{order.nog}}</h4></td></tr><br> 
 											 
 							   </table>
 							</div>
 							<hr class="bg-white">
 							
 							
-							<div class="selecteditems">
-								<h4><u>Selected Items:-</u></h4>
+							<div class="selecteditems" style="text-align: center;">
+								<h4>****<u>Selected Items:-</u>****</h4>
 								<div class="container">
 								{% for item in items %}
 									<div class="row">
@@ -116,87 +250,83 @@
 														<h5><u>Bill Total</u></h5>
 													</div>
 												</div>
-												
 											</div>
 										</div>
 										<div class="col-lg-6">
 											<h5>{{order.get_cart_total}}</h5>
 										</div>
 									</div>
-									<div class="row">
-										<div class="col-md-6">
-											<a class="btn btn-info" href="{% url 'pdf_view' oid %}" target="_blank">View Invoice</a>
-											
-										</div>
-										<div class="col-md-6">
-											
-											<a class="btn btn-info"  href="{% url 'pdf_download' oid %}">Download Invoice</a>
-										</div>
-									</div>
 								</div>
 							</div>
-						</div>
+						</div></center>
 					</div>
-                        
-						<div class="col-lg-6" style="border-color: blueviolet;">
-                                    <!--*******FeedBack Form Ithe yeil*******--> 
-                                         
-							<form action="{% url 'feedback'  rid %}" role="form" method="POST">
-                                {% csrf_token %} 
-                                <div class="container">
-									<div class="feedBack">
-										<div class="row">
-											<h3 class="text-center mt-5">FeedBack Form</h3>
-
-											<hr class="bg-white">
-											<h5 class="mt-4">How Do You Rate Your Overall Experience?</h5><br><br>
-
-											<div>
-												<input type="radio" name="rate" value="vbad">Very Bad &nbsp; &nbsp;
-												<input type="radio" name="rate" value="bad">Bad &nbsp; &nbsp;
-												<input type="radio" name="rate" value="good">Good &nbsp; &nbsp;
-												<input type="radio" name="rate" value="vgood">Very Good &nbsp; &nbsp;
-												<input type="radio" name="rate" value="exc">Excellent
-											</div>
-										</div>
-									</div>
-
-										<div class="feedBackdetails">
-											<div class="col-md-2"></div>
-											
-												<label>Email Id*<br>
-													<input type="text" id="email" name="email" required=""><br>
-												</label>
-
-												<label>FeedBack Type*<br>
-													<select name = "ftype" >
-														<option value="1">Restaurant</option>
-														<option value="2">Online System</option>
-														<option value="3">Other</option>
-													</select>
-												</label>
-
-												
-
-												<label>Phone Number*<br>
-													<input type="text" id="cno" name="cno" required="">
-												</label>
-
-												<label>FeedBack Description*<br>
-													<textarea id="message" name="message" required="" placeholder="Write Your Message Here" cols="50" rows="5"></textarea>
-												</label>
-											
-										</div>
-
-										<div class="row">
-											<div class="col-md-2"></div>
-											<button class="btn btn-primary" style="width: 40%; position: absolute; margin-left: 15%">Submit</button>
-										</div>
-								</div>
-							</form>
-						</div>
-         </div>
-     </div>        
-      
+				</div>
+			</div>
+		</div> 
+	</div><br>
+	<div class="row">
+		<div class="col-md-6">
+			<a class="btn btn-info" href="{% url 'pdf_view' oid %}" target="_blank" style="margin-left: 600px;">View Invoice</a>
+		</div>
+		<div class="col-md-6">
+			<a class="btn btn-info"  href="{% url 'pdf_download' oid %}">Download Invoice</a> 
+		</div>
+	</div><br>
+	<div class="row">
+		<div class="col-md-6">
+			<a class="btn btn-info" href="{% url 'logout' %}" style="margin-left: 600px;">Exit</a>
+		</div>
+		<div class="col-md-6">
+			<a class="btn btn-info" href="{% url 'feedback' rid %}">Feedback</a>
+		</div>
+	</div>
 </body>
+ <!-- Footer -->
+ <footer class="footer-distributed">
+
+	<div class="footer-left">
+		<img src="img/logo.png">
+		<h3>About:<span>Book a Table</span></h3>
+
+		<p class="footer-links">
+			<a href="#">Home</a> |
+			<a href="#">Blog</a> |
+			<a href="#">About</a> |
+			<a href="#">Contact</a>
+		</p>
+
+		<p class="footer-company-name">© 2020 SRODS Solutions Pvt. Ltd.</p>
+	</div>
+
+	<div class="footer-center">
+		<div>
+			<i class="fas fa-map-marker"></i>
+			<p><span>309 - Satyam,
+				 Bldg. No. A - 1, Sector - 1</span> Shivaji Nagar, Pune - 411003</p>
+		</div>
+
+		<div>
+			<i class="fa fa-phone"></i>
+			<p>+91 9011334003</p>
+		</div>
+		<div>
+			<i class="fa fa-envelope"></i>
+			<p><a href="support@bookatable.com">support@bookatable.com</a></p>
+		</div>
+	</div>
+	<div class="footer-right">
+		<p class="footer-company-about">
+			<span>About the company</span> Book a table at your favorite restaurant in just one click</p>
+		<div class="footer-icons">
+			<a href="#"><i class="fab fa-facebook-square"></i></a>
+			<a href="#"><i class="fab fa-twitter-square"></i></a>
+			<a href="#"><i class="fab fa-linkedin"></i></a>
+			<a href="#"><i class="fab fa-youtube-square"></i></a>
+			<a href="#"><i class="fab fa-instagram"></i></a>
+			
+		</div>
+	</div>
+</footer>
+<!-- Footer -->
+	
 </html>

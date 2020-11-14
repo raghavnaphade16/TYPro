@@ -23,8 +23,12 @@
  					<h3 class="card-title mt-2">{{rest.restName}} {{rest.restType}}</h3>
  					<h6>{{rest.restAddress}}</h6>
  					<p> Cost of three 1000/- approx. &nbsp; &nbsp; &nbsp;Cuisine: North Indian, South Indian</p>
- 					<a href="{% url 'RestInfo' rest.restId cust.custId   %}"><button class="btn btn-info">Book A Table</button></a>
- 				</div>
+					 {% if not cust.custId  %}
+					 <a href="{% url 'RestInfo' rest.restId%}"><button class="btn btn-outline-success mx-1"  > View Details </button></a>	
+				 	{% else %} 
+					<a href="{% url 'RestInfo' rest.restId cust.custId   %}"><button class="btn btn-info">Book A Table</button></a>
+					{% endif %}
+				</div>
  			</div>
          </div>
          {% endfor %}

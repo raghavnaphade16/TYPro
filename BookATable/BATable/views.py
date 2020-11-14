@@ -128,16 +128,18 @@ def home(request):
 
 
 def login(request):
+    print("URL Name is",request.resolver_match.url_name)
     uname = 'Name'
+
     if request.method == 'POST':
         username = request.POST['exampleInputEmail1']
         password = request.POST['exampleInputPassword1']
 
         if Customer.objects.filter(custEmail=username).exists() and Customer.objects.filter(custPassword=password).exists():
             cid = Customer.objects.filter(custEmail=username)
-
             rests = restHome()
-            return render(request, 'index.html', {'rests': rests, 'cust': cid[0]})
+            if request.resolver_match.url_name=='login':
+                return render(request, 'index.html', {'rests': rests, 'cust': cid[0]})
         else:
             print("Invalid credentials")
             messages.info(request, 'Invalid credentials')

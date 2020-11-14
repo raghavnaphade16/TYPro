@@ -74,7 +74,7 @@
             <div class="mx-2">
                 <!--   <button class="btn btn-success" data-toggle="modal" data-target="#SignUpModal">Sign Up</button>-->
 				{% if not cust.custId  %}
-					<button class="btn btn-outline-success mx-1"  >Hello </button>	
+					<button class="btn btn-outline-success mx-1"  >Login </button>	
 				{% else %}
 					<button class="btn btn-outline-success mx-1"  >Hello {{cust.custFirstName}}</button>
                 	<a href="{% url 'Payment' cust.custId   %}"><button class="btn btn-outline-success mx-1" >Cart</button></a>
@@ -126,9 +126,6 @@
   				<div class="menudetails">
           			<div class="section-title">
           				<h2><center>Check our tasty <span>Menu</span></center></h2>
-					</div>
-					<div>
-						<h6>Type</h6>
 					</div>
         			<div class="row menu-container">
 						
